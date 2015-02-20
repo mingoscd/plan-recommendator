@@ -7,12 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<header>
-		--layout
-		<%= link_to('List of places', places_path) %>
-	</header>
+	<nav class="nav--top">
+		<div id="js-btn--burguer" class="btn--burguer">
+			<div>
+			    <span class="the-burguer"></span>
+			    <span class="the-burguer"></span>
+			    <span class="the-burguer"></span>
+			</div>
+		</div>
+		<ul id="js-toggle-menu" class="navbar-list">
+			<li>
+				<a href="" class="link--top">lal</a>
+			</li>
+						<li>
+				<a href="" class="link--top">List of ....</a>
+			</li>
+		</ul>
+	</nav>
+		
 
 <%= yield %>
 
+
+	<div id="js-lightbox" class="lightbox"></div>
 </body>
 </html>

@@ -66,7 +66,6 @@ RSpec.describe PlacesController, type: :controller do
 			expect(place.valid?).to eq(true)
 		end
 	end
-
 	describe "GET #show" do 
 
 		let(:expected_place) { create(:place) }
