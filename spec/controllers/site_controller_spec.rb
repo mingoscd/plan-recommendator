@@ -9,7 +9,7 @@ RSpec.describe SiteController, type: :controller do
 		end
 
 		#modify this test, render index when session ok, else render no_user_index
-		it "render the index template" do 
+		it "render the correct template" do 
 			get :index
 			expect(response).to render_template("index")
 		end
