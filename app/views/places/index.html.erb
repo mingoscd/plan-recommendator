@@ -1,6 +1,7 @@
-<h1>places index</h1>
-<ul>
-	<%= @places.each do |place| %>
-		<li><%= place.name %>, <%= place.city %></li>
-	<% end %>
-</ul>
+<section class="main-content">
+	<h1>places index</h1>
+
+	<%= select("place", "type_of_site", Place.pluck(:type_of_site).uniq ) %>
+
+	<button class="js-geolocateme btn btn--success btn--success_shadow">Geolocate current city</button>
+</section>

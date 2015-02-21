@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<nav class="nav--top over-lightbox">
+	<nav class="nav--top js-over-lightbox">
 		<div id="js-btn--burguer" class="btn--burguer">
 			<div>
 			    <span class="the-burguer"></span>
@@ -17,10 +17,10 @@
 		</div>
 		<ul id="js-toggle-menu" class="nav--top_list navbar-list">
 			<li>
-				<a href="<%= places_path %>" class="link--top">Top places</a>
+				<a href="/" class="link--top">Home page</a>
 			</li>
 			<li>
-				<a href="" class="link--top">List of visited places</a>
+				<a href="<%= places_path %>" class="link--top">Look for places</a>
 			</li>
 			<li>
 				<a href="" class="link--top">My comments</a>

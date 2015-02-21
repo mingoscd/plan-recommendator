@@ -9,7 +9,6 @@ RSpec.describe PlacesController, type: :controller do
 			get :index
 			expect(response).to render_template("index")
 		end
-
 		it "responds with the correct array of places" do 
 			get :index
 			expected_places = Place.all
@@ -23,7 +22,7 @@ RSpec.describe PlacesController, type: :controller do
 			place = build(:place,city: "")
 			expect(place.valid?).to eq(false)  
 			place = build(:place, type_of_site: "")
-			expect(place.valid?).to eq(false)  
+			expect(place.valid?).to eq(false)
 		end
 		it "fills with incorrect data: name can not be in db" do
 			other_place = create(:place)

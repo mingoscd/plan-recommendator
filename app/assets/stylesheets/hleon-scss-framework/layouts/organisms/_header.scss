@@ -14,9 +14,12 @@ $navbar-height: 4em;
 	top: 0;
 	width: 100%;
 	height: $navbar-height;
+	box-shadow: 0 2px 4px rgba(0,0,0,.2);
+	z-index: 1;
 }
 .navbar-list{
 	display: block;
+	//transition: 500ms;
 	position: absolute;
 	width: 80%;
 	top: $navbar-height;
@@ -25,7 +28,6 @@ $navbar-height: 4em;
 	color: white;
 	background: $basecolor;
 	margin-bottom: 0;
-	transition: 500ms;
   padding-left: 0;
 }
 .nav--top_list li {
@@ -41,34 +43,34 @@ $navbar-height: 4em;
 .link--top {
   display: block;
   color: $darkergrey;
-	padding: 8px 24px;
+	padding: 0.75em 2.5em;
   width: 100%;
   text-decoration: none;
   &:hover{
+  	color: $darkergrey;
     text-decoration: none;
   }
 }
 
 .btn--burguer{
-	margin: 10px;
+	margin: 10px 10px 10px 20px;
 }
 //******************* SHOULD BE INCLUDED IN THE FRAMEWORK
 .lightbox{
 	opacity: 0;
 	top: 0;
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	height: 100vh;
-	transition: 500ms;
-	background-color: black;
+	background-color: $black;
 }
 
 .js-toogle-menu{
-	left:0
+	left:0;
+  box-shadow: 3px 5px 6px rgba(0,0,0,.3);
 }
 .js-lightbox--active{
-	opacity: .4;
-	z-index: 5
+	z-index: 5;
 }
 .js-over-lightbox--active{
 	z-index: 10;
@@ -82,7 +84,7 @@ $navbar-height: 4em;
 	display: inline-block;
 	padding: .5em;
 	float: right;
-	padding-right: 2em;
+	padding-right: 3em;
 	& img{
 		height: 3em;
 		width: 3em;
