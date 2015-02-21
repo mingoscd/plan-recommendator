@@ -1,12 +1,16 @@
 
-<section class="main-content grid">
-	<article class="item-2 grid">
-		<article class="xs-item-2">4</article>
-		<article class="xs-item-2">4</article>
-		<article class="xs-item-2"></article>
-	</article>
-	<article class="item-2">
-	</article>
-	<article class="item-2">
+<section class="main-content">
+	<article class="">
+		<%= form_tag do %>
+			<%= select_tag(:city_id, '<option value="1">Lisbon</option>') %>
+		<% end %>
+		
+		<form action="">
+			<select name="city_id" id="city_id">
+			  <option value="1">Lisbon</option>
+			  <option value="2">Madrid</option>
+			  <option value="12">Berlin</option>
+			</select>
+		</form>
 	</article>
 </section>

@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<nav class="nav--top">
+	<nav class="nav--top over-lightbox">
 		<div id="js-btn--burguer" class="btn--burguer">
 			<div>
 			    <span class="the-burguer"></span>
@@ -15,20 +15,33 @@
 			    <span class="the-burguer"></span>
 			</div>
 		</div>
-		<ul id="js-toggle-menu" class="navbar-list">
+		<ul id="js-toggle-menu" class="nav--top_list navbar-list">
 			<li>
-				<a href="" class="link--top">lal</a>
+				<a href="" class="link--top">Top places</a>
 			</li>
-						<li>
-				<a href="" class="link--top">List of ....</a>
+			<li>
+				<a href="" class="link--top">List of visited places</a>
+			</li>
+			<li>
+				<a href="" class="link--top">My comments</a>
+			</li>
+			<li>
+				<a href="" class="link--top">Add a place to the page</a>
 			</li>
 		</ul>
+		<figure class="user-avatar">
+			<a href="">
+				<img src="https://lh6.googleusercontent.com/-6aYrI1noB_4/VMtZnRLtBOI/AAAAAAAADA0/R2Ol5aBRPuw/s374-no/10155417_822204781140480_70017398_n%2B%281%29.jpg" alt="">				
+			</a>
+			<a href="" class="badge">
+				<span>2</span>
+			</a>
+		</figure>
 	</nav>
 		
 
 <%= yield %>
 
 
-	<div id="js-lightbox" class="lightbox"></div>
 </body>
 </html>

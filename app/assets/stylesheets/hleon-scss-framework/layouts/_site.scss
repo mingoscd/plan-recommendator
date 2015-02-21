@@ -65,5 +65,6 @@ I GIVE YOU THE TOOLS, BUT THE DESIGN IT'S UP TO YOU */
 @import "organisms/footer.scss";
 
 .main-content{
-	margin-top: 3em
+	margin-top: $navbar-height;
+	position: relative;
 }
