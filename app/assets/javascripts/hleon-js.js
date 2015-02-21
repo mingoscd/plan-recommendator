@@ -1,12 +1,17 @@
 //Jquery
 $(document).ready(function(){
 
-	// Button Burguer animation
-	$("#js-btn--burguer").click(function() {
+	$(document).on('click', '#js-btn--burguer', function() {
 	  $(this).toggleClass("js-active");
 		toggleMenu();
 		toggleShadow();
 		toggleBlockScroll();
+	});
+
+	$(".over-lightbox").on('click', 'a, button, input[type=submit]', function(e){
+		//add here animation to clicked element
+		console.log(e);
+		return false;
 	});
 	
 	function toggleMenu(){
@@ -31,6 +36,7 @@ $(document).ready(function(){
 	function toggleShadow(){
 		$("#js-lightbox").length ? removeLightbox() : createLightbox();
 	}
+
 	function createLightbox(){
 		$(".over-lightbox").addClass("js-over-lightbox--active");
 		$("body").append('<div id="js-lightbox" class="lightbox"></div>');

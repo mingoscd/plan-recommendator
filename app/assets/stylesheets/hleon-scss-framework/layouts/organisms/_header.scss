@@ -29,23 +29,22 @@ $navbar-height: 4em;
   padding-left: 0;
 }
 .nav--top_list li {
-  text-align: center;
-  border-top: .1em solid $bclight;
-  border-bottom: .2em solid $bcdark;
-  border-right: .1em solid $bcdark;
-  &:hover {
+  background: $white;
+  border-top: .1em solid $lightergrey;
+  border-bottom: .1em solid $lightergrey;
+  border-right: .1em solid $lightergrey;
+  &:focus {
     background-color: $bclighter;
   }
 }
 
 .link--top {
   display: block;
-	padding: 8px 16px;
+  color: $darkergrey;
+	padding: 8px 24px;
   width: 100%;
   text-decoration: none;
   &:hover{
-    color: $basecolor;
-    font-weight: bold;
     text-decoration: none;
   }
 }

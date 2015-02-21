@@ -113,7 +113,8 @@ $basefontsize :      16;
  * Brand stuff
  */
 // Color Base & Variantes  ////////////////////////////////
-$basecolor    : rgb(43,47,58); // Gris azulado// Hexadecimal: #2b2f3a  hsl(223,225,22)
+$basecolor    : rgb(33,150,243);
+//$basecolor    : rgb(43,47,58); // Gris azulado// Hexadecimal: #2b2f3a  hsl(223,225,22)
 $bclighter    : lighten($basecolor, 20%);
 $bclight      : lighten($basecolor, 10%);
 $bcdark       : darken($basecolor, 10%);
@@ -161,7 +162,8 @@ $cyan             : rgb(30,226,231);  /*Cyan       #1ee2e7 hsl(181,87,91) CMYK (
 // Links  /////////////////////////////////////////////////
 $linkcolor 		    : $white;
 $linkcolorhover 	: darken($linkcolor, 10);
-$linkcolorvisited : $white;
+//$linkcolorvisited : $white;
+$linkcolorvisited : $darkergrey;
 $linkcolorfocus 	: darken($linkcolorvisited, 10);
 
 
