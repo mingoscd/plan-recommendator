@@ -1,3 +1,50 @@
-// Place all the styles related to the places controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* PLACES FORM- filter forms */
+#search-form{
+	padding: 0 5vw;
+}
+.city-input-control, .type-input-control{
+	width: 45%;
+	text-align: center;
+	& label {
+		float: left;
+		font-size: 18px;
+	}
+	& select {
+		margin-bottom: 10px; 
+	}
+	& .help-inline{
+		padding-right: 10px;
+	}
+}
+.type-input-control{
+	float: right;
+}
+
+/* PLACES LIST */
+.places-list{
+	padding-left: 0;
+}
+
+.place-preview{
+	box-sizing: content-box;
+	height: 70px;
+	position: relative;
+	border-bottom: 1px solid $lightgrey;
+	&:first-child{
+		border-top: 1px solid $lightgrey;
+	}
+	&-img{
+		height: 68px;
+		width: 68px;
+		margin: 1px;
+		display: inline-block;
+		margin-right: 1em;
+	}
+	& h2{
+		display: inline-block;
+		position: absolute;
+		font-size: 1.2em;
+		top: 5px;
+		padding-right: 60px;
+	}
+}

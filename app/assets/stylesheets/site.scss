@@ -1,3 +1,24 @@
 // Place all the styles related to the site controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.main-content{
+	margin-top: $navbar-height;
+	position: relative;
+	padding-top: 3vh;
+}
+.title{
+	text-transform: uppercase;
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+.btn--success_shadow {
+	border-bottom: 2px solid darken($color-success, 20%);
+	border-top: 2px solid lighten($color-success, 25%);
+	border-radius: 6px;
+	box-shadow: 2px 3px 6px rgba(0,0,0,.2);
+	color: $white;
+	&:hover{
+		color: $white;
+	}	
+}

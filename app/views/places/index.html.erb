@@ -1,7 +1,25 @@
-<section class="main-content">
-	<h1>places index</h1>
-
-	<%= select("place", "type_of_site", Place.pluck(:type_of_site).uniq ) %>
-
-	<button class="js-geolocateme btn btn--success btn--success_shadow">Geolocate current city</button>
-</section>
+	<h2 class="title">places index</h2>
+	<article id="search-form">
+		<%= form_tag({controller: "places", action: "search"}, method: "get", class: "form-inline") do %>
+			<div class="type-input-control">
+				<%= label_tag( :place_type_of_site, 'Type of place: ') %>
+				<%= select("place", "type_of_site", Place.pluck(:type_of_site).uniq ) %>
+			</div>
+			<div class="city-input-control">
+				<%= label_tag( :place_city, 'City: ') %>
+				<%= select("place", "city", Place.pluck(:city).uniq ) %>
+				<span class="help-inline">or press</span>
+				<button class="js-geolocateme btn btn--success btn--success_shadow">Geolocation</button>			
+			</div>
+		<% end %>	
+	</article>
+	<article id="search-results">
+		<ul class="places-list">
+			<% @places.each do |place| %>
+				<li class="place-preview">
+					<img src="http://lorempixel.com/100/100/" alt="" class="place-preview-img">
+					<h2><%= place.name %></h2>
+				</li>
+			<% end %>
+		</ul>
+	</article>

@@ -1,0 +1,19 @@
+<article id="form-register">
+	<%= form_for @user, url: register_path do |f| %>
+	  <div class="register-input">
+	    <%= f.email_field :email, placeholder: "Email" %>
+	  </div>
+	  <div class="register-input">
+	    <%= f.password_field :password, placeholder: "Password" %>
+	  </div>
+	  <div class="register-input">
+	    <%= f.password_field :password_confirmation, placeholder: "Repeat password" %>
+	  </div>
+	  <%= f.submit 'Register', class: "btn" %>
+	<% end %>	
+</article>
+<article class="social-register">
+	<button id="google-register">Register with google</button>
+	<button id="facebook-register">Register with facebook</button>
+	<button id="twitter-register">Register with twitter</button>
+</article>

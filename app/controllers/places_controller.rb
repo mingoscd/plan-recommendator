@@ -40,6 +40,10 @@ class PlacesController < ApplicationController
 	def destroy
 	end
 
+	#other
+	def search
+	end
+
 	#private methods
 	private
 
