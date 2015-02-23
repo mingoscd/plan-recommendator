@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>PlanRecommend</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -17,16 +18,13 @@
 		</div>
 		<ul id="js-toggle-menu" class="nav--top_list navbar-list">
 			<li>
-				<a href="/" class="link--top">Home page</a>
+				<%= link_to('Home page', home_path, class: 'link--top') %>
 			</li>
 			<li>
-				<a href="<%= places_path %>" class="link--top">Look for places</a>
+				<%= link_to('List of places', places_path, class: 'link--top') %>
 			</li>
 			<li>
-				<a href="" class="link--top">My comments</a>
-			</li>
-			<li>
-				<a href="" class="link--top">Add a place to the page</a>
+				<%= link_to('Add place to web', new_place_path, class: 'link--top') %>
 			</li>
 			<li>
 				<%= form_tag logout_path, method: :delete do %>

@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150222191705) do
     t.decimal  "lon"
     t.float    "rate"
     t.float    "price"
+    t.string   "currency"
     t.integer  "time"
     t.string   "weather"
     t.string   "type_of_site"

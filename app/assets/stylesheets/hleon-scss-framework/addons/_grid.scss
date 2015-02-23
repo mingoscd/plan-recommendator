@@ -1,13 +1,11 @@
 @if $incluir-grid == true{
 
 
+
 /*------------------------------------*\
     $GRID
 \*------------------------------------*/
 
-  * {
-    box-sizing: border-box;
-  }
   .grid {
     display: flex;
     align-items: stretch;
@@ -17,13 +15,13 @@
 
   [class^="item-"], [class*=" item-"], [class^="xs-item-"], [class*=" xs-item-"] {
     flex-shrink: 0;
-      flex-grow: 1;
-      margin: $gap / 2;
-      padding: 5px;
+    flex-grow: 1;
+    margin: $gap / 2;
+    padding: 5px;
     // ES: Los dos siguientes solo son para propósitos de desarrollo, elimínalos o bórralos después.
     //This 2 following only for development purposes, delete or comment later.
-      background-color: pink;
-      min-height: 100px;  // remove, it's only for presentation purposes.
+    // background-color: pink;
+    // min-height: 100px;  // remove, it's only for presentation purposes.
   }
 
 
@@ -33,10 +31,14 @@
 
     .item-#{$i} {
       flex-basis: 100%;
-        @include media-query-bp($bp3) {
-          flex:0 0 calc(#{$width} - #{$gap});
+      @include media-query-bp($bp3) {
+        flex:0 0 calc(#{$width} - #{$gap});
       }
     }
-  }
 
+    .xs-item-#{$i} {
+      flex:0 0 calc(#{$width} - #{$gap})
+    }
+
+  }
 } // end if

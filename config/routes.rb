@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/', to: 'site#index'
+  get '/', to: 'site#index', as: :home
 
   get  "/register", to: "register#new"
   post "/register", to: "register#create"

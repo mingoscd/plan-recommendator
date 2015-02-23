@@ -8,6 +8,7 @@ class CreatePlaces < ActiveRecord::Migration
       t.decimal :lon
       t.float :rate
       t.float :price
+      t.string :currency
       t.integer :time
       t.string :weather
       t.string :type_of_site

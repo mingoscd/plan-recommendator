@@ -32,7 +32,10 @@ class UsersController < ApplicationController
 	private
 
 	def load_user
+		render 'deny_access', layout: 'no_menu' if session[:user_id] != params[:id].to_i
 		@user = User.find params[:id]
+		rescue ActiveRecord::RecordNotFound
+		render 'not_found', layout: 'no_menu'
 	end
 
 	def user_params

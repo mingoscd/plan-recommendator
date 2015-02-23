@@ -1,0 +1,40 @@
+<article id="new-place-form">
+	<%= form_for @place do |f| %>
+	  <div class="place-basics">
+	  	<div class="place-name-group">
+		  	<span class="fa fa-edit"></span>
+		    <%= f.text_field :name, placeholder: "Name of the site" %> 		
+	  	</div>
+	  	<div class="place-type-group">
+		  	<span class="fa fa-area-chart"></span>
+		  	<%= f.select( :type_of_site, Place.pluck(:type_of_site).uniq) %>
+	  	</div>
+	  </div>
+	  <div class="place-location">
+	  	<div class="place-city-group">
+		  	<span class="fa fa-building"></span>
+		    <%= f.text_field :city, placeholder: "city" %>
+	  	</div>
+	  	<div class="place-address-group">
+		  	<span class="fa fa-location-arrow"></span>
+		  	<%= f.text_field :address, placeholder: "Address or googlemaps link" %>
+		    <%= f.hidden_field :lat %>
+		    <%= f.hidden_field :lon %>
+		  </div>
+		  <div class="place-geolocation-group">
+		    <span class="fa fa-map-marker"></span>
+		    <a href="" class="js-geolocateme">Geolocation</a>
+		    <span class="help-inline"> to fill them automatically </span>
+		  </div>
+	  </div>
+	  <div class="place-price-group">
+		  <span class="fa fa-money"></span>
+	    <%= f.number_field :price, placeholder: "Price", step: 0.01 %>
+	    <%= f.select :currency, %w[€ £ $] %>
+	  </div>
+	  <div class="place-input">
+	    <%= f.file_field :photo %>
+	  </div>
+	  <%= f.submit 'Add place', class: "btn btn-add-place" %>
+	<% end %>	
+</article>
