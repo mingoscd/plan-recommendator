@@ -1,6 +1,26 @@
+<article class="welcome-page one-page">
+	<h1>Welcome!</h1>
+	<%= link_to('Sign up', register_path, class: "btn") %>
+	<span class="help-inline">or</span>
+	<button class="btn toggleLogin">Log in</button>	
 
-<section class="main-content">
-	<article class="">
-		<h1>Registered user page</h1>	
-	</article>
-</section>
+	<section id="login-register" class="js-fadeInRight">
+		<article>
+			<%= form_tag(controller: 'session', action: 'create') do %>
+			  <div class="register-input">
+			    <%= email_field_tag :email, nil, placeholder: "Email" %>
+			  </div>
+			  <div class="register-input">
+			    <%= password_field_tag :password, nil, placeholder: "Password" %>
+			  </div>
+			  <%= submit_tag 'Login', class: "btn toggleLogin" %>
+			<% end %>			
+			<button class="btn btn-cancel toggleLogin">Cancel</button>
+		</article>
+		<article class="social-login">
+			<button id="google-register">Google</button>
+			<button id="facebook-register">Facebook</button>
+			<button id="twitter-register">Twitter</button>
+		</article>
+	</section>
+</article>

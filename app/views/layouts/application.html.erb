@@ -28,6 +28,11 @@
 			<li>
 				<a href="" class="link--top">Add a place to the page</a>
 			</li>
+			<li>
+				<%= form_tag logout_path, method: :delete do %>
+				  <%= submit_tag "Logout", class: "link--top" %>
+				<% end %>
+			</li>
 		</ul>
 		<figure class="user-avatar">
 			<a href="">
@@ -44,7 +49,6 @@
 		<%= yield %>
 
 	</section>
-
 
 </body>
 </html>

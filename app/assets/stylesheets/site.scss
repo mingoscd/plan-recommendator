@@ -5,6 +5,7 @@
 	margin-top: $navbar-height;
 	position: relative;
 	padding-top: 3vh;
+	overflow-x: hidden;
 }
 .title{
 	text-transform: uppercase;
@@ -21,4 +22,21 @@
 	&:hover{
 		color: $white;
 	}	
+}
+.one-page{
+	height: 90vh;
+	width: 100vw;
+	overflow: hidden;
+}
+.js-fadeInRight{
+	z-index: 1;
+	background: white;
+	position: absolute;
+	width: 100%;
+	left: 100%;
+	top: 0;
+	transition: 500ms;
+}
+.js-fadeInRight--active{
+	left: 0;
 }

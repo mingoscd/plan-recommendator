@@ -9,9 +9,18 @@
 	  <div class="register-input">
 	    <%= f.password_field :password_confirmation, placeholder: "Repeat password" %>
 	  </div>
-	  <%= f.submit 'Register', class: "btn" %>
+	  	<%= f.submit 'Register', class: "btn" %>
 	<% end %>	
 </article>
+  <% if @user.errors.any? %>
+  	<div class="alert alert--error alert-register-error">
+  		<ul>
+				<% @user.errors.full_messages.each do |error_msg| %>
+					<li><%= error_msg %></li>
+				<% end %>
+			</ul>
+  	</div>
+  <% end %>
 <article class="social-register">
 	<button id="google-register">Register with google</button>
 	<button id="facebook-register">Register with facebook</button>
