@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-	before_action :load_user, except: :index
-	before_filter :authorize
+	#before_action :load_user, except: :index
 	#CRUD methods
 	def index
 		#@users = User.all

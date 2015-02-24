@@ -1,9 +1,10 @@
 class SiteController < ApplicationController
+	skip_before_filter :authenticate_user!
 	def index
-		if session[:user_id].nil?
-			render 'index', layout: 'no_menu'
+		if user_signed_in?
+			redirect_to user_path(current_user.id)
 		else
-			redirect_to user_path(session[:user_id])
+			render 'index', layout: 'no_menu'
 		end
 	end
 end

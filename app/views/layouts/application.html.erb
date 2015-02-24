@@ -28,7 +28,7 @@
 				<%= link_to('Add place to web', new_place_path, class: 'link--top') %>
 			</li>
 			<li>
-				<%= form_tag logout_path, method: :delete do %>
+				<%= form_tag destroy_user_session_path, method: :delete do %>
 				  <%= submit_tag "Logout", class: "link--top" %>
 				<% end %>
 			</li>

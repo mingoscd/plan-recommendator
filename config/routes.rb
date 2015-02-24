@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root 'site#index'
   get '/', to: 'site#index', as: :home
 
   get  "/register", to: "register#new"

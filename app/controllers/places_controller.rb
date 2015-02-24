@@ -1,5 +1,4 @@
 class PlacesController < ApplicationController
-	before_filter :authorize
 	#CRUD methods
 
 	def index

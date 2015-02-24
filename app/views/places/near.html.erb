@@ -5,6 +5,18 @@
 		var coords = navigator.geolocation.getCurrentPosition(onSuccess);
 	});
 	function onSuccess(e){
+		new Ajax(userCoordinates, sucess)
+		success = function(nearCoordinates) {
+      handleCoordinates(nearCoordinates)
+		}
+
+		handleCoordinates = function(coordinates) {
+			coordinates.each(function{
+				map.addMarker(coordinate.x, y)
+			})
+		}
+
+
 		var lon = e.coords.longitude;
 		var lat = e.coords.latitude;
 
@@ -20,6 +32,9 @@
 		var animation = google.maps.Animation.BOUNCE;
 		map.addMarker({ lat: lat, lng: lon, title: 'YOU', icon: icon, animation: animation });
 
-		//call to the api to get the places.where(latitude: lat+- ¿? ).where(longitude: lon+- ¿?)	
+		//call to the api to get the places.where(latitude: lat+- ¿? ).where(longitude: lon+- ¿?)
+		//METER AQUI LA LLAMADA DIRECTA A LA DB	
 	}
+
+	initPage(<%= @data %>)
 </script>

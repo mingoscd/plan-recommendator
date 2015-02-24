@@ -17,7 +17,7 @@ RSpec.describe RegisterController, type: :controller do
   describe "POST #create" do
     it "redirects to index if succesfull" do
       post :create, user: { email: "email@email.com", password: "password", password_confirmation: "password" }
-      expect(response).to redirect_to 'site#index'
+      expect(response).to be_success
     end
 
     it "creates a new user with: CORRECT DATA" do
@@ -25,9 +25,7 @@ RSpec.describe RegisterController, type: :controller do
 
       the_user = User.last
       expect(the_user.email).to eq("email@email.com")
-      expect(the_user.password_digest).to_not eq("password")
-
-      expect(the_user.authenticate("password")).to be the_user
+      expect(the_user).to be_valid
     end
 		it "user register VALIDATIONS: REPEATED EMAIL" do
       User.create(email: "email@email.com", password: "password", password_confirmation: "password") 
@@ -40,11 +38,6 @@ RSpec.describe RegisterController, type: :controller do
     end
     it "user register VALIDATIONS: SHORT PASSWORD" do
       post :create, user: {email: "email@email.com", password: "1234", password_confirmation: "1234"}
-      expect(response).to render_template 'new'
-    end
-    it "user register VALIDATIONS: LONG PASSWORD" do
-    	pwd = "a"*41
-      post :create, user: {email: "email@email.com", password: pwd, password_confirmation: pwd }
       expect(response).to render_template 'new'
     end
     #it "send welcome email after cat creation" do

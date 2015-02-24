@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe PlacesController, type: :controller do
-	#control all routes, must be logged
-	#control all routes, must be logged
-	#control all routes, must be logged
+		before do
+			sign_in(User.create(email: "email@email.com", password: "password", password_confirmation: "password") )
+		end
 	describe "GET #index" do 
 		it "render the index template" do 
 			get :index
