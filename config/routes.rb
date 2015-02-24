@@ -6,12 +6,17 @@ Rails.application.routes.draw do
   get  "/register", to: "register#new"
   post "/register", to: "register#create"
 
-  post "/login", to: "session#create"
-  delete "/logout", to: "session#destroy"
-
   resources :users, only: [:show, :edit, :update]
   
   resources :places
   get '/nearby_places', to: 'places#near'
   get '/search_places', to: 'places#search'
+
+  # API Routes
+  namespace :api do
+    namespace :v1 do
+      get '/near', to: "places#near"
+    end
+  end
+
 end

@@ -7,7 +7,7 @@
 	  	</div>
 	  	<div class="place-type-group">
 		  	<span class="fa fa-area-chart"></span>
-		  	<%= f.select( :type_of_site, %w[none monument disco bar park other]) %>
+		  	<%= f.select( :type_of_site, Category.all.collect {|p| p.name }, {include_blank: 'None'}) %>
 	  	</div>
 	  </div>
 	  <div class="place-location">
@@ -29,8 +29,8 @@
 	  </div>
 	  <div class="place-price-group">
 		  <span class="fa fa-money"></span>
-	    <%= f.number_field :price, placeholder: "Price", step: 0.01 %>
-	    <%= f.select :currency, %w[€ £ $] %>
+	    <%= f.number_field :price, placeholder: "Price", step: 0.01, value: 0 %>
+	    <%= f.select :currency, Currency.all.collect {|p| [p.symbol, p.name] } %>
 	  </div>
 	  <div class="place-input">
 	    <%= f.file_field :photo %>
@@ -38,3 +38,17 @@
 	  <%= f.submit 'Add place', class: "btn btn-add-place" %>
 	<% end %>	
 </article>
+
+<!-- errors -->
+<% if @place.errors.any? %>
+	<div class="alert alert--error alert-register-error">
+		<ul>
+			<% @place.errors.full_messages.each do |error_msg| %>
+				<li><%= error_msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<!-- To add coords when the address is fill -->
+<script src="../assets/add_place.js"></script>

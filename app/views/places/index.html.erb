@@ -3,7 +3,7 @@
 		<%= form_tag({controller: "places", action: "search"}, method: "get", class: "form-inline") do %>
 			<div class="type-input-control">
 				<%= label_tag( :place_type_of_site, 'Type of place: ') %>
-				<%= select("place", "type_of_site", Place.pluck(:type_of_site).uniq ) %>
+				<%= select("place", "type_of_site", Category.all.collect {|p| p.name }, {include_blank: 'None'} ) %>
 			</div>
 			<div class="city-input-control">
 				<%= label_tag( :place_city, 'City: ') %>

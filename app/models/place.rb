@@ -6,6 +6,10 @@ class Place < ActiveRecord::Base
 	####  VALIDATIONS
 	validates :name, uniqueness: true, presence: true
 	validates :city, :type_of_site, presence: true
+	validates :type_of_site, inclusion: { in: Category.all.collect {|p| p.name },
+    message: "%{value} is not a registered Category" }
+  validates :currency, inclusion: { in: Currency.all.collect {|p| p.name },
+    message: "%{value} is not a valid currency" }
 	validates :price, :rate, :time, allow_nil: true, allow_blank: true, numericality: { greater_than_or_equal_to: 0 }
 	#validates :lat, :lon, :weather, allow_blank: true
 

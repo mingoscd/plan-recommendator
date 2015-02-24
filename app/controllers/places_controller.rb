@@ -14,6 +14,7 @@ class PlacesController < ApplicationController
 	end
 
 	def create
+
 		@place = Place.new place_params
 		if @place.save
 			flash[:notice] = "Place created correctly"
