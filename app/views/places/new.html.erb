@@ -7,10 +7,15 @@
 	  	</div>
 	  	<div class="place-type-group">
 		  	<span class="fa fa-area-chart"></span>
-		  	<%= f.select( :type_of_site, Place.pluck(:type_of_site).uniq) %>
+		  	<%= f.select( :type_of_site, %w[none monument disco bar park other]) %>
 	  	</div>
 	  </div>
 	  <div class="place-location">
+		  <div class="place-geolocation-group">
+		    <span class="fa fa-map-marker"></span>
+		    <a href="" class="js-geolocateme">Geolocation</a>
+		    <span class="help-inline"> to fill current location </span>
+		  </div>
 	  	<div class="place-city-group">
 		  	<span class="fa fa-building"></span>
 		    <%= f.text_field :city, placeholder: "city" %>
@@ -20,11 +25,6 @@
 		  	<%= f.text_field :address, placeholder: "Address or googlemaps link" %>
 		    <%= f.hidden_field :lat %>
 		    <%= f.hidden_field :lon %>
-		  </div>
-		  <div class="place-geolocation-group">
-		    <span class="fa fa-map-marker"></span>
-		    <a href="" class="js-geolocateme">Geolocation</a>
-		    <span class="help-inline"> to fill them automatically </span>
 		  </div>
 	  </div>
 	  <div class="place-price-group">

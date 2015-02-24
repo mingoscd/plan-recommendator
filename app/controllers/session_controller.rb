@@ -7,7 +7,7 @@ def create
     	redirect_to user_path(user)
     else
       flash[:error] = "Login was not sucessful"
-      redirect_to 'site#index'
+      redirect_to home_path
     end
   end
 

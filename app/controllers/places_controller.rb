@@ -18,7 +18,7 @@ class PlacesController < ApplicationController
 		@place = Place.new place_params
 		if @place.save
 			flash[:notice] = "Place created correctly"
-			redirect_to 'site#index'
+			redirect_to home_path
 		else
 			render 'new'
 		end
@@ -32,7 +32,7 @@ class PlacesController < ApplicationController
 		@place = Place.find params[:id]
 		if @place.update_attributes place_params
 			flash[:notice] = "Place updated correctly"
-			redirect_to 'site#index'
+			redirect_to home_path
 		else
 			render 'edit'
 		end
@@ -43,6 +43,9 @@ class PlacesController < ApplicationController
 
 	#other
 	def search
+	end
+
+	def near
 	end
 
 	#private methods

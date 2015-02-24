@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   
   resources :places
+  get '/nearby_places', to: 'places#near'
   get '/search_places', to: 'places#search'
 end

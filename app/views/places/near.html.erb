@@ -1,0 +1,25 @@
+<button class="js-geolocation">Begin geolocation</button>
+<div id="map" style="position: fixed; bottom: 0;"></div>
+<script>
+	$(document).on('click','.js-geolocation',function(){
+		var coords = navigator.geolocation.getCurrentPosition(onSuccess);
+	});
+	function onSuccess(e){
+		var lon = e.coords.longitude;
+		var lat = e.coords.latitude;
+
+		var element = '#map';
+		var hei = window.innerHeight - 110;
+		var wid = window.innerWidth;
+		$(element).css('width', wid+'px').css('height', hei+'px');
+		var map = new GMaps({el: '#map', lat: lat, lng: lon, zoom: 16, width: wid, height: hei });
+
+		var icon = 'http://pinkkittyrose.com/forums/images/smilies/64_pokeball.png';
+		//icon in the user preferences? COOOOL; puedo meter ruby aqui?
+
+		var animation = google.maps.Animation.BOUNCE;
+		map.addMarker({ lat: lat, lng: lon, title: 'YOU', icon: icon, animation: animation });
+
+		//call to the api to get the places.where(latitude: lat+- ¿? ).where(longitude: lon+- ¿?)	
+	}
+</script>

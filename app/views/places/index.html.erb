@@ -17,7 +17,11 @@
 		<ul class="places-list">
 			<% @places.each do |place| %>
 				<li class="place-preview">
-					<img src="http://lorempixel.com/100/100/" alt="" class="place-preview-img">
+					<% if place.photo %>
+						<img src="<%= place.photo %>" alt="">
+					<% else %>
+						<img src="http://lorempixel.com/100/100/" alt="" class="place-preview-img">
+					<% end %>
 					<h2><%= place.name %></h2>
 				</li>
 			<% end %>

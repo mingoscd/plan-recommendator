@@ -3,12 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body{
 	height: auto;
+	width: 100vw;
+	overflow-x: hidden; 
 }
 .main-content{
 	margin-top: $navbar-height;
 	position: relative;
 	padding-top: 3vh;
-	overflow-x: hidden;
 }
 .title{
 	text-transform: uppercase;
@@ -25,11 +26,6 @@ body{
 	&:hover{
 		color: $white;
 	}	
-}
-.one-page{
-	height: 90vh;
-	width: 100vw;
-	overflow: hidden;
 }
 .js-fadeInRight{
 	z-index: 1;

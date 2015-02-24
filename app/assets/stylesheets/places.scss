@@ -33,7 +33,7 @@
 	&:first-child{
 		border-top: 1px solid $lightgrey;
 	}
-	&-img{
+	& img{
 		height: 68px;
 		width: 68px;
 		margin: 1px;
@@ -54,7 +54,7 @@
 #new-place-form{
 	padding: 0 1em;
 	& span.fa {
-		font-size: 1.5em;
+		font-size: 1.3em;
 		padding: 0 .3em;
 		vertical-align: middle;
 	}
@@ -90,14 +90,14 @@
 		display: inline-block;
 		width: auto;
 		& input {
-			max-width: 170px;
+			max-width: 150px;
 		}
 	}
 	& .place-type-group{
 		display: inline-block;
 		width: auto;
 		& select {
-			max-width: 90px;
+			max-width: 85px;
 		}
 	}
 }
