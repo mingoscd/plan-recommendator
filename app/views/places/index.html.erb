@@ -8,8 +8,6 @@
 			<div class="city-input-control">
 				<%= label_tag( :place_city, 'City: ') %>
 				<%= select("place", "city", Place.pluck(:city).uniq ) %>
-				<span class="help-inline">or press</span>
-				<button class="js-geolocateme btn btn--success btn--success_shadow">Geolocation</button>			
 			</div>
 		<% end %>	
 	</article>
@@ -17,12 +15,9 @@
 		<ul class="places-list">
 			<% @places.each do |place| %>
 				<li class="place-preview">
-					<% if place.photo %>
-						<img src="<%= place.photo %>" alt="">
-					<% else %>
-						<img src="http://lorempixel.com/100/100/" alt="" class="place-preview-img">
-					<% end %>
+					<img src="<%= place.photo %>" alt="">
 					<h2><%= place.name %></h2>
+					<p style="float:right"><%= place.type_of_site %></p>
 				</li>
 			<% end %>
 		</ul>

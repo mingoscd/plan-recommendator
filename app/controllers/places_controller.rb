@@ -14,7 +14,6 @@ class PlacesController < ApplicationController
 	end
 
 	def create
-
 		@place = Place.new place_params
 		if @place.save
 			flash[:notice] = "Place created correctly"
@@ -52,6 +51,6 @@ class PlacesController < ApplicationController
 	private
 
 	def place_params
-		params.require(:place).permit(:name, :city, :address, :lat, :lon, :price, :time, :type_of_site, :photo)
+		params.require(:place).permit(:name, :city, :address, :lat, :lon, :price, :currency, :time, :type_of_site, :photo)
 	end
 end

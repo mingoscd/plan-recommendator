@@ -120,3 +120,20 @@
 		margin-left: 10px;
 	}
 }
+
+/* Geolocation button - view near */
+.geobutton{
+	position: absolute;
+	z-index: 1;
+	background: $basecolor;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	box-shadow: 3px 5px 4px rgba(0,0,0,.4);
+	outline: none;
+	font-size: 2em;
+	color: white;
+	bottom: 25px;
+	right: 25px;
+	border: 0;
+}

@@ -1,0 +1,43 @@
+	<article class="">
+		<%= link_to('Nearby places', nearby_places_path ) %>
+	</article>
+	<article class="">
+		<h2>Suggest me</h2>
+		<%= form_tag({controller: "suggests", action: "search"}, method: "post") do %>
+			<div class="suggest-input">
+				<%= label_tag( :place_city, 'City: ') %>
+				<%= select("place", "city", Place.pluck(:city).uniq ) %>
+			</div>
+			<div class="suggest-input">
+				<%= label_tag( :tourist, 'Tourist: ') %>
+				<span class="description">I visited all the city</span>
+				<%=  range_field_tag(:tourist, 0 ,options = {min:0, max: 5}) %>
+			</div>
+			<div class="suggest-input">
+				<%= label_tag( :relax, 'Relaxing places: ') %>
+				<%=  range_field_tag(:relax, 0 ,options = {min:0, max: 5}) %>
+			</div>
+			<div class="suggest-input">
+				<%= label_tag( :dancing, 'Dancing: ') %>
+				<%=  range_field_tag(:dancing, 0 ,options = {min:0, max: 5}) %>
+			</div>
+			<div class="suggest-input">
+				<%= label_tag( :drink, 'Drink: ') %>
+				<%=  range_field_tag(:drink, 0 ,options = {min:0, max: 5}) %>
+			</div>
+			<%= submit_tag('Suggest me a plan') %>
+		<% end %>	
+	</article>
+
+	<script>
+		$(document).ready(function(){
+			$('input[type="range"]').change(function(){
+				switch(this.id){
+					case 'tourist': $(this).prev().html('Visit the city in 2 days'); break;
+					case 'relax': console.log("keep calm"); break;
+					case 'dancing': console.log("keep calm"); break;
+					case 'drink': console.log("keep calm"); break;
+				}
+			});
+		});
+	</script>

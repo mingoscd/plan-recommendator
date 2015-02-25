@@ -1,0 +1,10 @@
+<article id="search-results">
+	<ul class="places-list">
+		<% @plan.each do |place| %>
+			<li class="place-preview">
+				<img src="<%= place.photo %>" alt="">
+				<h2><%= place.name %></h2>
+			</li>
+		<% end %>
+	</ul>
+</article>

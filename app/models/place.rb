@@ -8,10 +8,8 @@ class Place < ActiveRecord::Base
 	validates :city, :type_of_site, presence: true
 	validates :type_of_site, inclusion: { in: Category.all.collect {|p| p.name },
     message: "%{value} is not a registered Category" }
-  validates :currency, inclusion: { in: Currency.all.collect {|p| p.name },
-    message: "%{value} is not a valid currency" }
+  validates :currency, inclusion: { in: Currency.all.collect {|p| p.name }, message: "%{value} is not a valid currency" }
 	validates :price, :rate, :time, allow_nil: true, allow_blank: true, numericality: { greater_than_or_equal_to: 0 }
-	#validates :lat, :lon, :weather, allow_blank: true
 
 	validates :address, presence: true, if: "lat.blank? && lon.blank?"
 	validates :lat, :lon, presence: true, if: "address.blank?"

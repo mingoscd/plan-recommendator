@@ -1,9 +1,18 @@
 <button class="js-geolocation">Begin geolocation</button>
 <div id="map" style="position: fixed; bottom: 0;"></div>
 <script>
-	var map;
-	$(document).on('click','.js-geolocation',function(){
-		var map = navigator.geolocation.getCurrentPosition(getMap);
+	$(document).ready(function(){
+		var map;
+		nearPageStyle();
+		navigator.geolocation.getCurrentPosition(getMap);
+		//binding the button to the refresh of the map
+		$(".js-geolocation").click(function(){ 
+			navigator.geolocation.getCurrentPosition(getMap);
+		});
+		//resizing the window
+		$(window).resize(function(){ 
+			navigator.geolocation.getCurrentPosition(getMap);
+		});
 	});
 	function getMap(e){
 		var lon = e.coords.longitude;
@@ -14,12 +23,12 @@
 		$.ajax({ dataType: "json", data: { lat: lat, lon: lon }, url: query}).done(function(places){
 			for(var i=0; i< places.length; i++){
 				var price = places[i].price > 0 ? places[i].price+" "+places[i].currency : "FREE";
-				map.addMarker({ lat: places[i].lat, lng: places[i].lon,	title: places[i].name, infoWindow: { content: '<h3 style="display: inline-block;">'+places[i].name+'</h3><span style="float: right;">'+price+'</span><p>'+places[i].address+'</p>'},});
+				map.addMarker({ lat: places[i].lat, lng: places[i].lon,	title: places[i].name, infoWindow: { content: '<h3>'+places[i].name+'</h3><p>'+places[i].address+'</p><span>'+price+'</span>'},});
 			}
 		});
-		//styles to div map
+		//map styles
 		var element = '#map';
-		var hei = window.innerHeight - 110;
+		var hei = window.innerHeight - 64;
 		var wid = window.innerWidth;
 		$(element).css('width', wid+'px').css('height', hei+'px');
 
@@ -31,5 +40,10 @@
 		var animation = google.maps.Animation.BOUNCE;
 		map.addMarker({ lat: lat, lng: lon, title: 'YOU', icon: icon, animation: animation });	
 	}
-
+	function nearPageStyle(){
+		$("body").css('overflow-y','hidden');
+		$(".main-content").css('margin-top', '2.5em');
+		$(".js-geolocation").addClass("geobutton");
+		$(".js-geolocation").html('<span class="fa fa-refresh"></span>');
+	}
 </script>

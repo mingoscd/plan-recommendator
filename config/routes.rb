@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get  "/register", to: "register#new"
   post "/register", to: "register#create"
 
+  get '/suggest', to: 'suggests#index'
+  post '/suggest', to: 'suggests#search'
+
   resources :users, only: [:show, :edit, :update]
   
   resources :places
