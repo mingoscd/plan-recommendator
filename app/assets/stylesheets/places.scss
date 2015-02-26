@@ -125,24 +125,46 @@
 .geobutton{
 	position: absolute;
 	z-index: 1;
-	background: $basecolor;
-	border-radius: 50%;
-	width: 60px;
-	height: 60px;
-	box-shadow: 3px 5px 4px rgba(0,0,0,.4);
+	color: $basecolor;
+	background: transparent;
+	width: 45px;
+	height: 45px;
+	text-shadow: 1px 3px 4px rgba(0,0,0,.3);
 	outline: none;
 	font-size: 2em;
-	color: white;
-	bottom: 25px;
-	right: 25px;
+	bottom: 0px;
+	right: 5px;
 	border: 0;
 	cursor: pointer;
 }
 
 .filter-elements{
-	top: 30px;
-	transition: 500ms;
-	box-shadow: none;
+	top: 10px;
+}
+.js-filter-elements.active{
+	background: lighten($basecolor, 20%);
+	color: lighten($basecolor, 40%);
+	border-radius: 50%;
+}
+ul li .filter-elements{
+	opacity: 0;
+	z-index: 0;
+	transition: 700ms;
+	&.active{
+		opacity: 1;
+		z-index: 1;
+	}
+}
+.filter-menu li{
+	&:nth-of-type(1) .filter-elements.active{
+		top: 60px;
+	}
+	&:nth-of-type(2) .filter-elements.active{
+		top: 120px;
+	}
+	&:nth-of-type(3) .filter-elements.active{
+		top: 180px;
+	}
 }
 
 /* hide controls of map */

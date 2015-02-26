@@ -1,9 +1,12 @@
 <button class="js-geolocation"><span class="fa fa-refresh"></span></button>
-<ul>
-	<button class="filter-elements"><span class="fa fa-filter"></span></button>
-	<li><button class="filter-elements"><span class="fa fa-filter"></span></button></li>
-	<li><button class="filter-elements"><span class="fa fa-filter"></span></button></li>
+<button class="js-filter-elements filter-elements"><span class="fa fa-filter"></span></button>
+<ul class="filter-menu">
+	<li><button class="filter-elements"><span class="fa fa-bank"></span></button></li>
+	<li><button class="filter-elements"><span class="fa fa-cutlery"></span></button></li>
+	<li><button class="filter-elements"><span class="fa fa-tree"></span></button></li>
 </ul>
+
+
 <div id="map" style="position: fixed; bottom: 0;"></div>
 <script>
 	$(document).ready(function(){
@@ -17,6 +20,9 @@
 		//resizing the window
 		$(window).resize(function(){ 
 			navigator.geolocation.getCurrentPosition(getMap);
+		});
+		$(".js-filter-elements").click(function(){
+			$(".filter-elements").toggleClass("active");
 		});
 	});
 	function getMap(e){
@@ -56,7 +62,7 @@
 	}
 	function nearPageStyle(){
 		$("body").css('overflow-y','hidden');
-		$(".main-content").css('margin-top', '4em').css('padding','0');
+		$(".main-content").css('margin-top', '3em').css('padding','0');
 		$("button").addClass("geobutton");
 	}
 </script>

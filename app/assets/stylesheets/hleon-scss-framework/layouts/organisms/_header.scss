@@ -6,7 +6,7 @@
 /*------------------------------------*\
     $HEADER
 \*------------------------------------*/
-$navbar-height: 4em;
+$navbar-height: 3em;
 
 .nav--top{
 	background: $basecolor;
@@ -50,7 +50,7 @@ $navbar-height: 4em;
   display: block;
   font-size: 1.1em;
   color: $darkergrey;
-	padding: 0.85em 2.5em;
+	padding: 0.5em 2.5em;
   width: 100%;
   text-decoration: none;
   &:hover{
@@ -60,7 +60,7 @@ $navbar-height: 4em;
 }
 
 .btn--burguer{
-	margin: 10px 10px 10px 20px;
+	margin: 3px 10px 10px 12px;
 }
 //******************* SHOULD BE INCLUDED IN THE FRAMEWORK
 .lightbox{
@@ -89,25 +89,25 @@ $navbar-height: 4em;
 .user-avatar{
 	position: relative;
 	display: inline-block;
-	padding: .5em;
 	float: right;
-	padding-right: 3em;
 	& img{
 		height: 3em;
 		width: 3em;
-		border-radius: 50%;
 	}
 }
 .badge{
 	display: inline-block;
 	background: $white;
+	padding: 0 7px;
 	font-weight: bold;
-	font-size: 16px;
-	border-radius: 40%;
+	font-size: 12px;
+	border-radius: 100%;
 	position: absolute;
-	top: 17px;
-	left: 50px;
+	top: 0px;
+	left: -18px;
+	margin-top: .6em;
 	& span{
+		text-align: center;
 		color: $basecolor;
 		vertical-align: middle;
 	}

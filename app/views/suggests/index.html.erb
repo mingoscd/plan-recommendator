@@ -50,7 +50,6 @@
 			//fill user position in form
 			(function(){
 				navigator.geolocation.getCurrentPosition(function(e){
-					debugger
 					$("#user_lat").val(e.coords.latitude);
 					$("#user_lon").val(e.coords.longitude);
 				});
