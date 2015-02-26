@@ -1,4 +1,9 @@
-<button class="js-geolocation">Begin geolocation</button>
+<button class="js-geolocation"><span class="fa fa-refresh"></span></button>
+<ul>
+	<button class="filter-elements"><span class="fa fa-filter"></span></button>
+	<li><button class="filter-elements"><span class="fa fa-filter"></span></button></li>
+	<li><button class="filter-elements"><span class="fa fa-filter"></span></button></li>
+</ul>
 <div id="map" style="position: fixed; bottom: 0;"></div>
 <script>
 	$(document).ready(function(){
@@ -22,8 +27,17 @@
 		var query = '<%= api_v1_near_path %>';
 		$.ajax({ dataType: "json", data: { lat: lat, lon: lon }, url: query}).done(function(places){
 			for(var i=0; i< places.length; i++){
-				var price = places[i].price > 0 ? places[i].price+" "+places[i].currency : "FREE";
-				map.addMarker({ lat: places[i].lat, lng: places[i].lon,	title: places[i].name, infoWindow: { content: '<h3>'+places[i].name+'</h3><p>'+places[i].address+'</p><span>'+price+'</span>'},});
+				var price = places[i].price > 0 ? places[i].price+" "+places[i].currency+"s" : "FREE";
+				switch(places[i].type_of_site){
+					case "Monument": icon = "http://destinationusa.info/images/icon-museum.gif"; break; 
+					case "Park": icon = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQhI_h49x0CHHlo6k_ibJ-I1iaLAePmISsx8u1zK6LiACTmBCjjgg"; break;
+					case "Bar": icon = "http://tullegada.com/portal/images/iconos/hospedaje/icon-bar.png"; break;
+					case "Cafe": icon = "http://www.leics.gov.uk/cafe_icon.jpg"; break;
+					case "Theater": icon = "http://www.develsergemeenschap.nl/content/img/theater-icon.png"; break;
+					case "Food/Restaurant": icon = "http://www.chefirie.com/wp-content/uploads/2013/08/Restaurant-Blue-icon-sm.png"; break;
+					default: icon = "http://www.physicianoneurgentcare.com/_global/img/template/map-marker.png";
+				}
+				map.addMarker({ lat: places[i].lat, lng: places[i].lon,	icon: icon, infoWindow: { content: '<h3>'+places[i].name+'</h3><p>'+places[i].address+'</p><span>'+price+'</span>'},});
 			}
 		});
 		//map styles
@@ -42,8 +56,7 @@
 	}
 	function nearPageStyle(){
 		$("body").css('overflow-y','hidden');
-		$(".main-content").css('margin-top', '2.5em');
-		$(".js-geolocation").addClass("geobutton");
-		$(".js-geolocation").html('<span class="fa fa-refresh"></span>');
+		$(".main-content").css('margin-top', '4em').css('padding','0');
+		$("button").addClass("geobutton");
 	}
 </script>
