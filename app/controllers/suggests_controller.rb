@@ -4,71 +4,57 @@ class SuggestsController < ApplicationController
 
 	def search
 		@city = params[:place][:city]
-		preferences = get_preferences params
-		@places = []
+		point_lat = params[:user_lat].to_f
+		point_lon = params[:user_lon].to_f
+		@preferences = get_preferences params
+
+		#generar punto de partida (cercano)
+		#init parameters
 		@plan = []
-		# tourist: 0 if 0, 1 if >=1, 2 if >=3, 3 if 5, suggest monuments (close each other)
-		# the number of places follows a linear expresion (x+1)/2 , posible change: exponential
-		suggest_tourist preferences
-		
-		# relax: 1 park and 1 nice place (close to the park)
-		suggest_relax preferences
-		
-		# dancing .....
-
-		#drink: 1-2 suggest nice places, 3-5 suggest cheap places
-		suggest_drink preferences 
-
-		@places.each do |i|
-			i.each do |place|
-				@plan << place
-			end
+		i = 0 
+		step = 0 
+		while i == 0  do
+   		step += 0.01
+   		range_lat = (point_lat - step) .. (point_lat + step)
+   		range_lon = (point_lon - step) .. (point_lon + step)
+   		point = generate_begin_point(range_lat,range_lon)
+   		i = point.count
 		end
-		@plan.sort_by { rand }
+		@plan << point.sample
+
+		#otros puntos de interes cercanos en bucle (4-5)
+
+		#incluir lugar de descanso
+
+		#mooore
+
 		render 'search'
 	end
 
 	private
 
 	def get_preferences params
-		rejected_keys = ["utf8", "authenticity_token", "place", "commit", "controller", "action"]
+		rejected_keys = ["utf8", "authenticity_token", "place", "user_lat", "user_lon", "commit", "controller", "action"]
 		params.reject do |key, value|
 			rejected_keys.include? key
 		end
 	end
 
-	def generate_plan
-		Place.where(city: @city).order("RANDOM()")
+	def generate_begin_point range_lat, range_lon
+		type = get_type_begining
+		Place.where(city: @city).where(type_of_site: type).where(lat: range_lat).where(lon: range_lon)
 	end
 
-	def suggest_tourist preferences
-		@places << suggest_monuments( (preferences[:tourist].to_i+1)/2 )
-		@places << suggest_beauty(1) 
-	end
-
-	def suggest_relax preferences
-		@places << suggest_park(1) if preferences[:relax].to_i > 0
-		@places << suggest_beauty(1) if preferences[:relax].to_i > 2 && preferences[:tourist].to_i < 3
-	end
-
-	def suggest_drink preferences
-		@places << suggest_bar(1) if preferences[:drink].to_i > 0
-	end
-
-	#submethods
-	def suggest_monuments number
-		generate_plan.where(type_of_site: "Monument").limit(number)
-	end
-
-	def suggest_park number
-		generate_plan.where(type_of_site: "Park").limit(number)
-	end
-
-	def suggest_beauty number
-		generate_plan.where(type_of_site: "Food/Restaurant").limit(number)
-	end
-
-	def suggest_bar number
-		generate_plan.where(type_of_site: "Bar").limit(number)
+	def get_type_begining
+		if @preferences[:tourist].to_i >= 2
+			x = ["Monument", "Museum", "Other"] 
+		elsif @preferences[:relax].to_i >= 2 
+			x = ["Park", "Cafe", "Beautiful Place", "Beach"]
+		elsif @preferences[:drink].to_i >= 3 
+			x = ["Bar", "Disco", "Party"]
+		else
+			x = ["Monument", "Park", "Other", "Beautiful Place"] 
+		end
+		x
 	end
 end

@@ -22,12 +22,16 @@
 				<%=  range_field_tag(:relax, 0 ,options = {min:0, max: 5}) %>
 			</div>
 			<div class="suggest-input">
-				<%= label_tag( :dancing, 'Dancing: ') %>
-				<%=  range_field_tag(:dancing, 0 ,options = {min:0, max: 5}) %>
-			</div>
-			<div class="suggest-input">
 				<%= label_tag( :drink, 'Drink: ') %>
 				<%=  range_field_tag(:drink, 0 ,options = {min:0, max: 5}) %>
+			</div>
+			<div class="suggest-input">
+				<%= label_tag( :money, 'Dancing: ') %>
+				<%=  range_field_tag(:money, 0 ,options = {min:0, max: 5}) %>
+			</div>
+			<div class="suggest-input">
+				<%=  hidden_field_tag(:user_lat) %>
+				<%=  hidden_field_tag(:user_lon) %>
 			</div>
 			<%= submit_tag('Suggest me a plan') %>
 		<% end %>	
@@ -43,5 +47,13 @@
 					case 'drink': console.log("keep calm"); break;
 				}
 			});
+			//fill user position in form
+			(function(){
+				navigator.geolocation.getCurrentPosition(function(e){
+					debugger
+					$("#user_lat").val(e.coords.latitude);
+					$("#user_lon").val(e.coords.longitude);
+				});
+			})();				
 		});
 	</script>
