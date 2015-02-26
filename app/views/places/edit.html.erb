@@ -1,5 +1,54 @@
-Edit Form
+<article id="new-place-form">
+	<%= form_for @place do |f| %>
+	  <div class="place-basics">
+	  	<div class="place-name-group">
+		  	<span class="fa fa-edit"></span>
+		    <%= f.text_field :name, placeholder: "Name of the site" %> 		
+	  	</div>
+	  	<div class="place-type-group">
+		  	<span class="fa fa-area-chart"></span>
+		  	<%= f.select( :type_of_site, Category.all.collect {|p| p.name }, {include_blank: 'None'}) %>
+	  	</div>
+	  </div>
+	  <div class="place-location">
+		  <div class="place-geolocation-group">
+		    <span class="fa fa-map-marker"></span>
+		    <a href="" class="js-geolocateme">Geolocation</a>
+		    <span class="help-inline"> to fill current location </span>
+		  </div>
+	  	<div class="place-city-group">
+		  	<span class="fa fa-building"></span>
+		    <%= f.text_field :city, placeholder: "city" %>
+	  	</div>
+	  	<div class="place-address-group">
+		  	<span class="fa fa-location-arrow"></span>
+		  	<%= f.text_field :address, placeholder: "Address or googlemaps link" %>
+		    <%= f.hidden_field :lat %>
+		    <%= f.hidden_field :lon %>
+		  </div>
+	  </div>
+	  <div class="place-price-group">
+		  <span class="fa fa-money"></span>
+	    <%= f.number_field :price, placeholder: "Price", step: 0.01, value: 0 %>
+	    <%= f.select :currency, Currency.all.collect {|p| [p.symbol, p.name] } %>
+	  </div>
+	  <div class="place-input">
+	    <%= f.file_field :photo %>
+	  </div>
+	  <%= f.submit 'Update place', class: "btn btn-add-place" %>
+	<% end %>	
+</article>
 
-<%= form_for @place do |f| %>
-	<%= f.submit 'Save Changes' %>
+<!-- errors -->
+<% if @place.errors.any? %>
+	<div class="alert alert--error alert-register-error">
+		<ul>
+			<% @place.errors.full_messages.each do |error_msg| %>
+				<li><%= error_msg %></li>
+			<% end %>
+		</ul>
+	</div>
 <% end %>
+
+<!-- To add coords when the address is fill -->
+<script src="../assets/add_place.js"></script>

@@ -24,6 +24,7 @@ class SuggestsController < ApplicationController
 				@plan << place
 			end
 		end
+		@plan.sort_by { rand }
 		render 'search'
 	end
 
@@ -37,7 +38,7 @@ class SuggestsController < ApplicationController
 	end
 
 	def generate_plan
-		Place.where(city: @city)
+		Place.where(city: @city).order("RANDOM()")
 	end
 
 	def suggest_tourist preferences
@@ -64,7 +65,7 @@ class SuggestsController < ApplicationController
 	end
 
 	def suggest_beauty number
-		generate_plan.where(type_of_site: "Beautiful Place").limit(number)
+		generate_plan.where(type_of_site: "Food/Restaurant").limit(number)
 	end
 
 	def suggest_bar number
