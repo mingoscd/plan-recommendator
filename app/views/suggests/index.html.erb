@@ -1,5 +1,4 @@
 	<article class="">
-		<%= link_to('Nearby places', nearby_places_path ) %>
 		<a href="">One day in</a>
 		<a href="">Two days in</a>
 		<a href="">Three days in</a>
@@ -14,19 +13,22 @@
 			</div>
 			<div class="suggest-input">
 				<%= label_tag( :tourist, 'Tourist: ') %>
-				<span class="description">I visited all the city</span>
+				<span class="description"></span>
 				<%=  range_field_tag(:tourist, 0 ,options = {min:0, max: 5}) %>
 			</div>
 			<div class="suggest-input">
 				<%= label_tag( :relax, 'Relaxing places: ') %>
+				<span class="description"></span>
 				<%=  range_field_tag(:relax, 0 ,options = {min:0, max: 5}) %>
 			</div>
 			<div class="suggest-input">
 				<%= label_tag( :drink, 'Drink: ') %>
+				<span class="description"></span>
 				<%=  range_field_tag(:drink, 0 ,options = {min:0, max: 5}) %>
 			</div>
 			<div class="suggest-input">
-				<%= label_tag( :money, 'Dancing: ') %>
+				<%= label_tag( :money, 'MONEY: ') %>
+				<span class="description"></span>
 				<%=  range_field_tag(:money, 0 ,options = {min:0, max: 5}) %>
 			</div>
 			<div class="suggest-input">
@@ -41,10 +43,10 @@
 		$(document).ready(function(){
 			$('input[type="range"]').change(function(){
 				switch(this.id){
-					case 'tourist': $(this).prev().html('Visit the city in 2 days'); break;
-					case 'relax': console.log("keep calm"); break;
-					case 'dancing': console.log("keep calm"); break;
-					case 'drink': console.log("keep calm"); break;
+					case 'tourist': textTourist($(this)); break;
+					case 'relax': textRelax($(this)); break;
+					case 'drink': textDrink($(this)); break;
+					case 'money': textMoney($(this)); break;
 				}
 			});
 			//fill user position in form
@@ -55,4 +57,26 @@
 				});
 			})();				
 		});
+		function textTourist(element){
+			var description = element.siblings(".description");
+			switch(element.val()){
+				case "0": description.html("I already visited the city"); break;
+				case "1": break;
+				case "2": break;
+				case "3": description.html('Let\'s do a tour around the city'); break;
+				case "4": description.html('Let\'s do a tour around the city'); break;
+				case "5": description.html('Visit all the places! <img src="http://troll.me/images/x-all-the-things/lets-do-this.jpg" style="display: inline; height: 70px; width: 100px; vertical-align: middle;">'); break;
+			}
+		}
+		function textMoney(element){
+			var description = element.siblings(".description");
+			switch(element.val()){
+				case "0": description.html("I don't need money to have fun"); break;
+				case "1": break;
+				case "2": break;
+				case "3": description.html('I don\'t care about the money'); break;
+				case "4": break;
+				case "5": description.html('<img src="http://genophoria.files.wordpress.com/2012/11/shut-up-and-take-my-money.jpg" style="display: inline; height: 70px; width: 100px; vertical-align: middle;">'); break;
+			}
+		}
 	</script>

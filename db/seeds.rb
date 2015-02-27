@@ -67,3 +67,8 @@ Place.create(city: "Barcelona", name: "Estadi Olimpic", type_of_site: "Other" , 
 Place.create(city: "Barcelona", name: "Monasterio de Pedralbes", type_of_site: "Other" , address: "" , lat: 41.396075, lon: 2.112073, price: 4.4, currency: "euro")
 Place.create(city: "Barcelona", name: "Mercat de la Boqueria", type_of_site: "Other" , address: "Les Rambles, 89" , lat: 41.382029, lon: 2.172286, price: 0, currency: "euro")
 Place.create(city: "Barcelona", name: "Catedral de Barcelona", type_of_site: "Monument" , address: "" , lat: 41.384348, lon: 2.176061, price: 7, currency: "euro")
+Place.create(city: "Barcelona", name: "Firefly", type_of_site: "Bar" , address: "Carrer de Bailèn, 41" , lat: 41.393614, lon: 2.174767, price: 4, currency: "euro")
+Place.create(city: "Barcelona", name: "MOB", type_of_site: "Cafe" , address: "Carrer de Bailèn, 11" , lat: 41.391842, lon: 2.177192, price: 3, currency: "euro")
+Place.create(city: "Barcelona", name: "La Taberna de l'Eixample", type_of_site: "Bar" , address: "Gran Via de les Corts Catalanes, 688" , lat: 41.393122, lon: 2.173748, price: 3, currency: "euro")
+Place.create(city: "Barcelona", name: "Snooker", type_of_site: "Bar" , address: "Carrer de Roger de Llúria, 57", lat: 41.393700, lon: 2.167985, price: 5, currency: "euro")
+Place.create(city: "Barcelona", name: "Santa Piadina", type_of_site: "Food/Restaurant" , address: "" , lat: 41.389278, lon: 2.179033, price: 3, currency: "euro")
