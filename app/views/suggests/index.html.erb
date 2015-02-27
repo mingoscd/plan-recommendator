@@ -1,44 +1,40 @@
-	<article class="">
-		<a href="">One day in</a>
-		<a href="">Two days in</a>
-		<a href="">Three days in</a>
-		<a href="">A different day</a>
-	</article>
-	<article class="">
-		<h2>Suggest me</h2>
-		<%= form_tag({controller: "suggests", action: "search"}, method: "post") do %>
-			<div class="suggest-input">
-				<%= label_tag( :place_city, 'City: ') %>
-				<%= select("place", "city", Place.pluck(:city).uniq ) %>
-			</div>
-			<div class="suggest-input">
-				<%= label_tag( :tourist, 'Tourist: ') %>
-				<span class="description"></span>
-				<%=  range_field_tag(:tourist, 0 ,options = {min:0, max: 5}) %>
-			</div>
-			<div class="suggest-input">
-				<%= label_tag( :relax, 'Relaxing places: ') %>
-				<span class="description"></span>
-				<%=  range_field_tag(:relax, 0 ,options = {min:0, max: 5}) %>
-			</div>
-			<div class="suggest-input">
-				<%= label_tag( :drink, 'Drink: ') %>
-				<span class="description"></span>
-				<%=  range_field_tag(:drink, 0 ,options = {min:0, max: 5}) %>
-			</div>
-			<div class="suggest-input">
-				<%= label_tag( :money, 'MONEY: ') %>
-				<span class="description"></span>
-				<%=  range_field_tag(:money, 0 ,options = {min:0, max: 5}) %>
-			</div>
-			<div class="suggest-input">
-				<%=  hidden_field_tag(:user_lat) %>
-				<%=  hidden_field_tag(:user_lon) %>
-			</div>
-			<%= submit_tag('Suggest me a plan') %>
-		<% end %>	
-	</article>
-
+	<div class="suggest-content">
+		<article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime quia provident aut sit maiores dignissimos, dolores enim recusandae, nam quod alias adipisci eius blanditiis reprehenderit natus! Dolorum esse quis tempore!</article>
+		<article class="suggest-form">
+			<h2>Suggest me</h2>
+			<%= form_tag({controller: "suggests", action: "search"}, method: "post") do %>
+				<div class="suggest-input">
+					<%= label_tag( :place_city, 'City: ') %>
+					<%= select("place", "city", Place.pluck(:city).uniq ) %>
+				</div>
+				<div class="suggest-input">
+					<%= label_tag( :tourist, 'Tourist: ') %>
+					<span class="description"></span>
+					<%=  range_field_tag(:tourist, 0 ,options = {min:0, max: 5}) %>
+				</div>
+				<div class="suggest-input">
+					<%= label_tag( :relax, 'Relaxing places: ') %>
+					<span class="description"></span>
+					<%=  range_field_tag(:relax, 0 ,options = {min:0, max: 5}) %>
+				</div>
+				<div class="suggest-input">
+					<%= label_tag( :drink, 'Drink: ') %>
+					<span class="description"></span>
+					<%=  range_field_tag(:drink, 0 ,options = {min:0, max: 5}) %>
+				</div>
+				<div class="suggest-input">
+					<%= label_tag( :money, 'MONEY: ') %>
+					<span class="description"></span>
+					<%=  range_field_tag(:money, 0 ,options = {min:0, max: 5}) %>
+				</div>
+				<div class="suggest-input">
+					<%=  hidden_field_tag(:user_lat) %>
+					<%=  hidden_field_tag(:user_lon) %>
+				</div>
+				<%= submit_tag('Suggest me a plan') %>
+			<% end %>	
+		</article>
+	</div>
 	<script>
 		$(document).ready(function(){
 			$('input[type="range"]').change(function(){

@@ -1,15 +1,21 @@
 // Place all the styles related to the site controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+html{
+	background-image: url('/images/background.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat; 
+}	
 body{
 	height: auto;
 	width: 100vw;
-	overflow-x: hidden; 
+	overflow-x: hidden;
+
 }
 .main-content{
 	margin-top: $navbar-height;
 	position: relative;
-	padding-top: 1em;
 }
 .title{
 	text-transform: uppercase;

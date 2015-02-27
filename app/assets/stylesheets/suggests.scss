@@ -1,6 +1,11 @@
 // Place all the styles related to the suggests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.suggest-content{
+	background: rgba(255,255,255,.8);
+	padding: 1.5em 2em 2em 2em;
+}
+
 .suggest-input{
 	padding: 0 2em;
 	& label {
