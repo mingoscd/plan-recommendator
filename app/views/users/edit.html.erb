@@ -1,5 +1,5 @@
 <article id="edit-user-form">
-	<%= form_for @user, url: register_path do |f| %>
+	<%= form_for @user do |f| %>
 		 <div class="register-input">
 	    <%= f.text_field :name, placeholder: "Name" %>
 	  </div>
@@ -15,7 +15,11 @@
 		<div class="place-input">
 	    <%= f.file_field :avatar%>
 	  </div>
-	  <%= f.submit 'Update data', class: "btn" %>
+	  <div class="register-input">
+	    <%= f.select :marker, %w[smile apple heart mario octocat pokeball] %>
+	  </div>
+	  <%= link_to('Cancel', home_path , class: "btn btn-cancel") %>
+	  <%= f.submit 'Update', class: "btn" %>
 	<% end %>	
 </article>
   <% if @user.errors.any? %>

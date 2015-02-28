@@ -1,0 +1,200 @@
+// Place all the styles related to the register controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+input, select{
+	background: transparent;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	&:focus{
+		border-bottom: 2px solid $basecolor;
+	}
+}
+#form-register, #login-register, #edit-user-form{
+	padding: 3vh 5vw 0;
+	& .register-input{
+		margin-bottom: 2vh;
+		& input[type="email"], input[type="password"]{
+			height: 50px;
+			font-size: 1.6rem;
+			text-indent: .75em;
+			&::-webkit-input-placeholder{
+				font-size: 1.6rem;
+			}
+		}
+	}
+	& input[type="submit"]{
+		width: 100%;
+		font-size: 1.6rem;
+		color: $white;
+		box-shadow: 2px 4px 5px rgba(0,0,0,.2);
+		border-radius: 5px;
+	}
+}
+.alert-register-error{
+	width: 100%;
+	& ul {
+		margin-bottom: 0;
+	}
+}
+
+#login-register, #edit-user-form{
+	input[type="submit"]{
+		width: 45%;
+		float: right;
+	}
+}
+
+.btn-cancel{
+	width: 45%;
+	float: left;
+	margin-top: -9px;
+	font-size: 1.6rem;
+	color: #333;
+  background-color: #fff;
+  border: 1px solid #ddd;
+	box-shadow: 2px 4px 5px rgba(0,0,0,.1);
+	border-radius: 5px;
+}
+#edit-user-form .btn-cancel{
+	margin-top: -1px;
+}
+
+.social-login {
+	& #google-register, #facebook-register, #twitter-register{
+		width: 100%;
+		margin: 1.5em 0 0;
+		padding: 1em;
+	}	
+}
+
+
+/* PLACES FORM- filter forms */
+#search-form{
+	padding: 0 5vw;
+}
+.city-input-control, .type-input-control{
+	width: 45%;
+	text-align: center;
+	& label {
+		float: left;
+		font-size: 18px;
+	}
+	& select {
+		margin-bottom: 10px; 
+	}
+	& .help-inline{
+		padding-right: 10px;
+	}
+}
+.type-input-control{
+	float: right;
+}
+
+/* PLACES LIST */
+.places-content{
+	padding-top: 1em;
+}
+.places-list{
+	padding: 0 1.5em;
+}
+
+.place-preview{
+	box-sizing: content-box;
+	height: 70px;
+	position: relative;
+	border: 1px solid $lightgrey;
+	margin: .5em 0;
+	padding-right: 1em;
+	background: white;
+	box-shadow: 2px 3px 4px rgba(0,0,90,0.2);
+	* {
+		position: absolute;
+	}
+	img{
+		height: 70px;
+		width: 70px;
+		display: inline-block;
+		border-right: 1px solid $lightgrey;
+		box-shadow: 1px 0 2px rgba(0,0,90,0.1);
+	}
+	h2{
+		font-size: 1.1em;
+		color: $darkgrey;
+		top: 5px;
+		left: 80px;
+	}
+}
+
+/* PLACES form new */
+
+#new-place-form{
+	padding: 0 1em;
+	& span.fa {
+		font-size: 1.3em;
+		padding: 0 .3em;
+		vertical-align: middle;
+	}
+	& input, select {
+		border-left: 0;
+		border-top: 0;
+		border-right: 0;
+		margin-top: 1em;
+		padding-right: .1em;
+		display: inline-block;
+		width: 80%;
+		&:focus{
+			border-bottom: 2px solid $basecolor;
+		}
+	}
+	& select{
+		vertical-align: 2px;
+	}
+	& input[type="submit"]{
+		margin-top: 1em;
+		width: 100%;
+		display: block;
+		color: white;
+		font-size: 1.5em;
+		border-radius: 5px;
+		box-shadow: 2px 4px 4px rgba(0,0,0,.2);
+	}
+}
+.place-basics{
+	width: 100%;
+	margin-bottom: 1.5em;
+	& .place-name-group{
+		display: inline-block;
+		width: auto;
+		& input {
+			max-width: 150px;
+		}
+	}
+	& .place-type-group{
+		display: inline-block;
+		width: auto;
+		& select {
+			max-width: 85px;
+		}
+	}
+}
+.place-geolocation-group{
+	margin-top: 1em;
+	& a {
+		font-size: 1.4em;
+		color: $basecolor;
+		vertical-align: middle;
+	}
+}
+.place-price-group{
+	margin: 1.5em 0;
+	text-align: left;	
+	& input{
+		max-width: 100px;
+	}
+	& select{
+		max-width: 45px;
+		margin-left: 10px;
+	}
+}
+
