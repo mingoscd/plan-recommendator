@@ -1,2 +1,22 @@
 
 <%= @place.name %>, <%= @place.city %>
+<div class="wiki-content"></div>
+<script>
+	var lang = window.navigator.language;
+	var place = "<%= @place.name %>".replace(/ /g, "_");
+	var url = "http://"+ lang +".wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page="+ place +"&callback=?"
+	$.ajax({
+        type: "GET",
+        url: url,
+        contentType: "application/json; charset=utf-8",
+        async: false,
+        dataType: "json",
+        success: function (data, textStatus, jqXHR) {
+          var link = data.parse.text["*"].split('href="')[1].split('&amp')[0];
+          $(".wiki-content").html('Info: <a href="http://'+lang+'.wikipedia.org'+link+'" target="_blank">Wikipedia link</a>');
+        },
+        error: function (errorMessage) {
+        	alert('Server Error');
+        }
+    });
+</script>

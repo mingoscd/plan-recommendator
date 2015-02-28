@@ -1,14 +1,14 @@
 // Place all the styles related to the register controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-input, select{
+input:not([type="submit"]), select{
 	background: transparent;
 	border-top: 0;
 	border-left: 0;
 	border-right: 0;
-	&:focus{
-		border-bottom: 2px solid $basecolor;
-	}
+}
+input:focus{
+	border-bottom: 2px solid $basecolor;
 }
 #form-register, #login-register, #edit-user-form{
 	padding: 3vh 5vw 0;
