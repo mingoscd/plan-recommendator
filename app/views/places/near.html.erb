@@ -1,126 +1,128 @@
-<button class="js-geolocation"><span class="fa fa-refresh"></span></button>
-<button class="js-filter-elements filter-elements"><span class="fa fa-filter"></span></button>
+<button class="js-geolocation geobutton"><span class="fa fa-refresh"></span></button>
+<button class="js-filter-elements filter-elements geobutton"><span class="fa fa-filter"></span></button>
 <ul class="filter-menu">
 	<li>
-		<button class="filter-elements option"><span data-checked="true" class="fa fa-bank"></span></button>
+		<button class="filter-elements option geobutton"><span data-checked="true" class="fa fa-bank"></span></button>
 	</li>
 	<li>
-		<button class="filter-elements option"><span data-checked="true" class="fa fa-cutlery"></span></button>
+		<button class="filter-elements option geobutton"><span data-checked="true" class="fa fa-cutlery"></span></button>
 	</li>
 	<li>
-		<button class="filter-elements option"><span data-checked="true" class="fa fa-tree"></span></button>
+		<button class="filter-elements option geobutton"><span data-checked="true" class="fa fa-tree"></span></button>
 	</li>
 </ul>
 
 <div id="map" style="position: fixed; bottom: 0;"></div>
+
 <script>
 	$(document).ready(function(){
-		var map;
-		nearPageStyle();
+	var map;
+	startGeolocation();
+	//binding the button to the refresh of the map
+	$(".js-geolocation").click(function(){ 
 		startGeolocation();
-		//binding the button to the refresh of the map
-		$(".js-geolocation").click(function(){ 
-			startGeolocation();
-		});
-		//resizing the window
-		$(window).resize(function(){ 
-			startGeolocation();
-		});
-		//opening and closing the menu
-		$(".js-filter-elements").click(function(){
-			$(".filter-elements").toggleClass("active");
-		});
-		//add funcionality to filter menu buttons
-		$(".filter-elements.option .fa").click(function(){
-			if( $(this).data('checked') ){
-				if( $(this).hasClass("fa-bank") ) nearCulture();
-				if( $(this).hasClass("fa-cutlery") ) nearFoodDrink();
-				if( $(this).hasClass("fa-tree") ) nearNature();
-			}else{
-				startGeolocation();
-			}
-			$(this).data('checked', !$(this).data('checked') )
-		})
 	});
-
-	function startGeolocation(type){
-		type = typeof type !== 'undefined' ? type : "all";
-
-		navigator.geolocation.getCurrentPosition(function(e){ 
-			var coords = e.coords;
-			getMap(coords, type);
-		});
-	}
-	function nearCulture(){
-		var culture = ['Monuments','Museum','Theater'];
-		startGeolocation(culture);
-	}
-	function nearFoodDrink(){
-		var food_drink = ['Bar','Cafe','Food/Restaurant'];
-		startGeolocation(food_drink);
-	}
-	function nearNature(){
-		var food_drink = ['Park','Zoo/Aquarium','Beach','Beautiful Place'];
-		startGeolocation(food_drink);
-	}
-
-	function getMap(coords, type){
-		var lon = coords.longitude;
-		var lat = coords.latitude;
-
-		//async call, when the response arrive, the other code has been executed
-		getPlacesMarkers(lat, lon, type);
-
-		//map styles
-		var element = '#map';
-		var hei = window.innerHeight - 64;
-		var wid = window.innerWidth;
-		$(element).css('width', wid+'px').css('height', hei+'px');
-
-		//creating the map
-		map = new GMaps({el: '#map', lat: lat, lng: lon, zoom: 15, width: wid, height: hei });
-
-		//user marker
-		var icon = new google.maps.MarkerImage("mapicons/pokeball.png", null, null, null, new google.maps.Size(40,40));
-		//var icon = 'http://pinkkittyrose.com/forums/images/smilies/64_pokeball.png';
-		//var icon = 'https://d16zszyyqlzz6z.cloudfront.net/images/apple-logo-f4325ff1.png';
-		var animation = google.maps.Animation.BOUNCE;
-		map.addMarker({ lat: lat, lng: lon, title: 'YOU', icon: icon, size: 2, animation: animation });	
-	}
-	function getPlacesMarkers(lat, lon, type){
-		var url = '<%= api_v1_near_path %>';
-		var data = { lat: lat, lon: lon }
-		if(type != "all") data.type_of_site = type;
-		var query = { 
-									dataType: "json", 
-									data: data, 
-									url: url
-								}
-		$.ajax(query).done(function(places){
-			for(var i=0; i< places.length; i++){
-				var price = places[i].price > 0 ? places[i].price+" "+places[i].currency+"s" : "FREE";
-				icon = getIconStyle(places[i].type_of_site);
-				map.addMarker({ lat: places[i].lat, lng: places[i].lon,	icon: icon, infoWindow: { content: '<h3>'+places[i].name+'</h3><p>'+places[i].address+'</p><span>'+price+'</span>'},});
-			}
-		});
-	}
-	function getIconStyle(type){
-		switch(type){
-			case "Monument": image = "http://destinationusa.info/images/icon-museum.gif"; break;
-			case "Park": image = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQhI_h49x0CHHlo6k_ibJ-I1iaLAePmISsx8u1zK6LiACTmBCjjgg"; break;
-			case "Bar": image = "http://icons.iconarchive.com/icons/iconshock/brilliant-food/256/beer-icon.png"; break;
-			case "Cafe": image = "http://www.leics.gov.uk/cafe_icon.jpg"; break;
-			case "Theater": image = "http://www.develsergemeenschap.nl/content/img/theater-icon.png"; break;
-			case "Food/Restaurant": image = "http://skorpiosgyros.net/wp-content/themes/Skorpios/images/Restaurant-Red-icon.png"; break;
-			default: image = "http://www.physicianoneurgentcare.com/_global/img/template/map-marker.png"; break;
+	//resizing the window
+	$(window).resize(function(){ 
+		startGeolocation();
+	});
+	//opening and closing the menu
+	$(".js-filter-elements span").click(function(){
+		$(".filter-elements").toggleClass("active");
+		return false;
+	});
+	//add funcionality to filter menu buttons
+	$(".filter-elements.option .fa").click(function(){
+		if( $(this).data('checked') ){
+			if( $(this).hasClass("fa-bank") ) nearCulture();
+			if( $(this).hasClass("fa-cutlery") ) nearFoodDrink();
+			if( $(this).hasClass("fa-tree") ) nearNature();
+		}else{
+			startGeolocation();
 		}
-		var icon = new google.maps.MarkerImage(image, null, null, null, new google.maps.Size(40,40));
-		return icon;
-	}
+		$(this).data('checked', !$(this).data('checked') );
+	});
+});
 
-	function nearPageStyle(){
-		$("body").css('overflow-y','hidden');
-		$(".main-content").css('margin-top', '3em').css('padding','0');
-		$("button").addClass("geobutton");
+function startGeolocation(type){
+	type = typeof type !== 'undefined' ? type : "all";
+
+	navigator.geolocation.getCurrentPosition(function(e){ 
+		var coords = e.coords;
+		getMap(coords, type);
+	});
+}
+function nearCulture(){
+	var culture = ['Monuments','Museum','Theater'];
+	startGeolocation(culture);
+}
+function nearFoodDrink(){
+	var food_drink = ['Bar','Cafe','Food/Restaurant'];
+	startGeolocation(food_drink);
+}
+function nearNature(){
+	var food_drink = ['Park','Zoo/Aquarium','Beach','Beautiful Place'];
+	startGeolocation(food_drink);
+}
+
+function getMap(coords, type){
+	var lon = coords.longitude;
+	var lat = coords.latitude;
+
+	//async call, when the response arrive, the other code has been executed
+	getPlacesMarkers(lat, lon, type);
+
+	//map styles
+	var element = '#map';
+	var hei = window.innerHeight - 48;
+	var wid = window.innerWidth;
+	$(element).css('width', wid+'px').css('height', hei+'px');
+
+	//creating the map
+	map = new GMaps({el: '#map', lat: lat, lng: lon, zoom: 15, width: wid, height: hei });
+
+	//user marker
+	var icon = new google.maps.MarkerImage("mapicons/pokeball.png", null, null, null, new google.maps.Size(40,40));
+	//var icon = 'http://pinkkittyrose.com/forums/images/smilies/64_pokeball.png';
+	//var icon = 'https://d16zszyyqlzz6z.cloudfront.net/images/apple-logo-f4325ff1.png';
+	var animation = google.maps.Animation.BOUNCE;
+	map.addMarker({ lat: lat, lng: lon, title: 'YOU', icon: icon, size: 2, animation: animation });	
+}
+function getPlacesMarkers(lat, lon, type){
+	var url = '/api/v1/near';
+	var data = { lat: lat, lon: lon }
+	if(type != "all") data.type_of_site = type;
+	var query = { 
+								dataType: "json", 
+								data: data, 
+								url: url
+							}
+	$.ajax(query).done(function(places){
+		for(var i=0; i< places.length; i++){
+			var price = places[i].price > 0 ? places[i].price+" "+places[i].currency+"s" : "FREE";
+			var icon = getIconStyle(places[i].type_of_site);
+			var markerStyle = { 
+				lat: places[i].lat, 
+				lng: places[i].lon,	
+				icon: icon, 
+				infoWindow: { content: '<h3>'+places[i].name+'</h3><p>'+places[i].address+'</p><span>'+price+'</span>'}
+			};
+			map.addMarker(markerStyle);
+		}
+	});
+}
+function getIconStyle(type){
+	switch(type){
+		case "Monument": image = "http://destinationusa.info/images/icon-museum.gif"; break;
+		case "Park": image = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQhI_h49x0CHHlo6k_ibJ-I1iaLAePmISsx8u1zK6LiACTmBCjjgg"; break;
+		case "Beach": image = "http://www.clker.com/cliparts/b/6/4/5/12074316002137950358beach%20access%20black.svg.thumb.png"; break;
+		case "Bar": image = "http://icons.iconarchive.com/icons/iconshock/brilliant-food/256/beer-icon.png"; break;
+		case "Cafe": image = "http://www.leics.gov.uk/cafe_icon.jpg"; break;
+		case "Theater": image = "http://www.develsergemeenschap.nl/content/img/theater-icon.png"; break;
+		case "Food/Restaurant": image = "http://skorpiosgyros.net/wp-content/themes/Skorpios/images/Restaurant-Red-icon.png"; break;
+		default: image = "http://www.physicianoneurgentcare.com/_global/img/template/map-marker.png"; break;
 	}
+	var icon = new google.maps.MarkerImage(image, null, null, null, new google.maps.Size(40,40));
+	return icon;
+}
 </script>

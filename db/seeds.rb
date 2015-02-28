@@ -37,6 +37,7 @@ Currency.create(name: "pound", symbol: "£")
 #generate base sites
 Place.destroy_all
 Place.create(city: "Barcelona", name: "Arc de trionf", type_of_site: "Monument" , address: "Passeig de Lluís Companys 15" , lat: 41.391052, lon: 2.180645 , price: 0, currency: "euro")
+Place.create(city: "Barcelona", name: "Torre Agbar", type_of_site: "Monument" , address: "Avinguda Diagonal, 211" , lat: 41.403506, lon: 2.189577, price: 0, currency: "euro")
 Place.create(city: "Barcelona", name: "Parc de la ciutadela", type_of_site: "Park", address: "Carrer de l'Institut Escola 16.I" , lat: 41.388123, lon: 2.186015, price: 0, currency: "euro")
 Place.create(city: "Barcelona", name: "Parc Joan Miró", type_of_site: "Park", address: "" , lat: 41.378071, lon: 2.148418, price: 0, currency: "euro")
 Place.create(city: "Barcelona", name: "Parc Carles I", type_of_site: "Park", address: "" , lat: 41.388544, lon: 2.193487, price: 0, currency: "euro")

@@ -5,7 +5,7 @@ module Api
 			after_action :set_access_control_headers
 
 			def near
-				step = { lat: 0.03, lon: 0.03 }
+				step = { lat: 0.02, lon: 0.02 }
 				range_lat = (params[:lat].to_f - step[:lat]) .. (params[:lat].to_f + step[:lat])
 				range_lon = (params[:lon].to_f - step[:lon]) .. (params[:lon].to_f + step[:lon])
 				type = params[:type_of_site] || false

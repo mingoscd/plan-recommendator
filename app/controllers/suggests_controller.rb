@@ -33,7 +33,7 @@ class SuggestsController < ApplicationController
 				point_lon = @plan.last.lon.to_f
 				step , i = 0 , 0
 				while i == 0  do
-		   		step += 0.002
+		   		step += 0.004
 		   		range_lat = (point_lat - step) .. (point_lat + step)
 		   		range_lon = (point_lon - step) .. (point_lon + step)
 		   		point = generate_random_point(range_lat,range_lon)
@@ -96,10 +96,10 @@ class SuggestsController < ApplicationController
 		tourist = @preferences[:tourist].to_f - (tourist * Random.rand)
 		relax = @preferences[:relax].to_f - (relax * Random.rand)
 		drink = @preferences[:drink].to_f - (drink * Random.rand)
-		x = Random.rand((tourist + relax + drink).abs)
-		if x <= tourist
+		x = Random.rand(tourist.abs + relax.abs + drink.abs)
+		if x <= tourist.abs
 			return @cultural_types
-		elsif x <= tourist + relax 
+		elsif x <= tourist.abs + relax.abs 
 			return @relax_types
 		else
 			return @drink_types
@@ -107,7 +107,7 @@ class SuggestsController < ApplicationController
 	end
 
 	def get_near_bars point_lat, point_lon
-		step = 0.01
+		step = 0.02
 		range_lat = (point_lat - step) .. (point_lat + step)
 		range_lon = (point_lon - step) .. (point_lon + step)
 		places = Place.where(city: @city).where(type_of_site: "Bar")
@@ -116,7 +116,5 @@ class SuggestsController < ApplicationController
 		places.each do |place|
 			@plan << place
 		end
-		debugger
-		p @plan
 	end
 end

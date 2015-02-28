@@ -1,0 +1,29 @@
+<article id="edit-user-form">
+	<%= form_for @user, url: register_path do |f| %>
+		 <div class="register-input">
+	    <%= f.text_field :name, placeholder: "Name" %>
+	  </div>
+		 <div class="register-input">
+	    <%= f.text_field :surname, placeholder: "Surname" %>
+	  </div>
+		 <div class="register-input">
+	    <%= f.date_field :birthday %>
+	  </div>
+		 <div class="register-input">
+	    <%= f.select :genre, %w[Male Female]  %>
+	  </div>
+		<div class="place-input">
+	    <%= f.file_field :avatar%>
+	  </div>
+	  <%= f.submit 'Update data', class: "btn" %>
+	<% end %>	
+</article>
+  <% if @user.errors.any? %>
+  	<div class="alert alert--error alert-register-error">
+  		<ul>
+				<% @user.errors.full_messages.each do |error_msg| %>
+					<li><%= error_msg %></li>
+				<% end %>
+			</ul>
+  	</div>
+  <% end %>

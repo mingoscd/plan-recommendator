@@ -21,31 +21,37 @@
 }
 
 /* PLACES LIST */
+.places-content{
+	padding-top: 1em;
+}
 .places-list{
-	padding-left: 0;
+	padding: 0 1.5em;
 }
 
 .place-preview{
 	box-sizing: content-box;
 	height: 70px;
 	position: relative;
-	border-bottom: 1px solid $lightgrey;
-	&:first-child{
-		border-top: 1px solid $lightgrey;
-	}
-	& img{
-		height: 68px;
-		width: 68px;
-		margin: 1px;
-		display: inline-block;
-		margin-right: 1em;
-	}
-	& h2{
-		display: inline-block;
+	border: 1px solid $lightgrey;
+	margin: .5em 0;
+	padding-right: 1em;
+	background: white;
+	box-shadow: 2px 3px 4px rgba(0,0,90,0.2);
+	* {
 		position: absolute;
-		font-size: 1.2em;
+	}
+	img{
+		height: 70px;
+		width: 70px;
+		display: inline-block;
+		border-right: 1px solid $lightgrey;
+		box-shadow: 1px 0 2px rgba(0,0,90,0.1);
+	}
+	h2{
+		font-size: 1.1em;
+		color: $darkgrey;
 		top: 5px;
-		padding-right: 60px;
+		left: 80px;
 	}
 }
 

@@ -1,3 +1,4 @@
+<div class="places-content">
 	<h2 class="title">places index</h2>
 	<article id="search-form">
 		<%= form_tag({controller: "places", action: "search"}, method: "get", class: "form-inline") do %>
@@ -14,11 +15,18 @@
 	<article id="search-results">
 		<ul class="places-list">
 			<% @places.each do |place| %>
-				<li class="place-preview">
-					<img src="<%= place.photo %>" alt="">
-					<h2><%= place.name %></h2>
-					<p style="float:right"><%= place.type_of_site %></p>
-				</li>
+				<a href="<%= place_path(place) %>">
+					<li class="place-preview">
+						<img src="<%= place.photo %>" alt="">
+						<h2><%= place.name %></h2>
+					</li>
+				</a>
 			<% end %>
 		</ul>
 	</article>
+</div>
+
+<script>
+	//when adding elements to dom, the body must be resized: main-content + nav + 24 (ul-padding-bottom)
+	$("body").css('height', ($(".main-content").height()+72)+'px' );
+</script>
