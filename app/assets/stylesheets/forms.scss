@@ -62,9 +62,15 @@ input:focus{
 }
 
 #login-form, #edit-user-form{
+	input, select{
+		font-size: 1em;
+		margin: .3em 0;
+	}
 	input[type="submit"]{
 		width: 45%;
 		float: right;
+		background: $basecolor;
+		color: white;
 	}
 }
 
@@ -78,9 +84,6 @@ input:focus{
   background-color: #fff;
 	box-shadow: 2px 4px 5px rgba(0,0,0,.4);
 	border-radius: 5px;
-}
-#edit-user-form .btn-cancel{
-	margin-top: -1px;
 }
 
 /* REGISTER PAGE */
@@ -217,24 +220,15 @@ input:focus{
 .place-basics{
 	width: 100%;
 	margin-bottom: 1.5em;
-	& .place-name-group{
+	.place-type-group select {
 		display: inline-block;
-		width: auto;
-		& input {
-			max-width: 150px;
-		}
-	}
-	& .place-type-group{
-		display: inline-block;
-		width: auto;
-		& select {
-			max-width: 85px;
-		}
+		min-width: 100px;
+		max-width: 150px;
 	}
 }
 .place-geolocation-group{
 	margin-top: 1em;
-	& a {
+	a {
 		font-size: 1.4em;
 		color: $basecolor;
 		vertical-align: middle;
@@ -243,10 +237,10 @@ input:focus{
 .place-price-group{
 	margin: 1.5em 0;
 	text-align: left;	
-	& input{
-		max-width: 100px;
+	input{
+		max-width: 80px;
 	}
-	& select{
+	select{
 		max-width: 45px;
 		margin-left: 10px;
 	}

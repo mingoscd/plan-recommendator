@@ -1,5 +1,4 @@
 <div class="suggest-content">
-	<article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime quia provident aut sit maiores dignissimos, dolores enim recusandae, nam quod alias adipisci eius blanditiis reprehenderit natus! Dolorum esse quis tempore!</article>
 	<article class="suggest-form">
 		<h2>Suggest me</h2>
 		<%= form_tag({controller: "suggests", action: "search"}, method: "post") do %>
@@ -23,7 +22,7 @@
 				<%=  range_field_tag(:drink, 0 ,options = {min:0, max: 5}) %>
 			</div>
 			<div class="suggest-input">
-				<%= label_tag( :money, 'MONEY: ') %>
+				<%= label_tag( :money, 'Money: ') %>
 				<span class="description"></span>
 				<%=  range_field_tag(:money, 0 ,options = {min:0, max: 5}) %>
 			</div>

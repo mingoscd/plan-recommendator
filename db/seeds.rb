@@ -72,4 +72,4 @@ Place.create(city: "Barcelona", name: "Firefly", type_of_site: "Bar" , address: 
 Place.create(city: "Barcelona", name: "MOB", type_of_site: "Cafe" , address: "Carrer de Bailèn, 11" , lat: 41.391842, lon: 2.177192, price: 3, currency: "euro")
 Place.create(city: "Barcelona", name: "La Taberna de l'Eixample", type_of_site: "Bar" , address: "Gran Via de les Corts Catalanes, 688" , lat: 41.393122, lon: 2.173748, price: 3, currency: "euro")
 Place.create(city: "Barcelona", name: "Snooker", type_of_site: "Bar" , address: "Carrer de Roger de Llúria, 57", lat: 41.393700, lon: 2.167985, price: 5, currency: "euro")
-Place.create(city: "Barcelona", name: "Santa Piadina", type_of_site: "Food/Restaurant" , address: "" , lat: 41.389278, lon: 2.179033, price: 3, currency: "euro")
+Place.create(city: "Barcelona", name: "Santa Piadina", type_of_site: "Food/Restaurant" , address: "" , lat: 41.389278, lon: 2.179033, price: 5, currency: "euro")
