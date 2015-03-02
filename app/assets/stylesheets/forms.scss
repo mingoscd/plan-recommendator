@@ -10,25 +10,48 @@ input:not([type="submit"]), select{
 input:focus{
 	border-bottom: 2px solid $basecolor;
 }
-#form-register, #login-register, #edit-user-form{
-	padding: 3vh 5vw 0;
+#login-form{
+	height: 40%;
+	min-height: 180px;
+}
+#login-form-social{
+	height: 60%;
+	background: rgba(255,255,255,.3);
+	.social-buttons{
+		background: none;
+	}
+}
+
+#form-register, #login-form, #edit-user-form{
+	padding: 3vh 5vw 3vh;
+	background: rgba(255,255,255,.3);
 	& .register-input{
 		margin-bottom: 2vh;
 		& input[type="email"], input[type="password"]{
-			height: 50px;
-			font-size: 1.6rem;
-			text-indent: .75em;
+			color: $basecolor;
+			text-align: center;
+			height: 8vh;
+			min-height: 35px;
+			max-height: 55px;
+			font-size: 1.4rem;
+			text-indent: .5em;
+			border-radius: 0;
+			border-bottom: 1px solid darken($basecolor, 20%);
 			&::-webkit-input-placeholder{
-				font-size: 1.6rem;
+				font-size: 1.4rem;
+				color: darken($basecolor, 20%);
 			}
 		}
 	}
 	& input[type="submit"]{
-		width: 100%;
-		font-size: 1.6rem;
-		color: $white;
-		box-shadow: 2px 4px 5px rgba(0,0,0,.2);
+		background: rgba(255,255,255,.9);
 		border-radius: 5px;
+		box-shadow: 3px 4px 5px rgba(0,0,0,.4);
+		color: darken($basecolor, 20%);
+		font-size: 1.5rem;
+		height: 5%;
+		margin-top: .5em;
+		width: 100%;
 	}
 }
 .alert-register-error{
@@ -38,7 +61,7 @@ input:focus{
 	}
 }
 
-#login-register, #edit-user-form{
+#login-form, #edit-user-form{
 	input[type="submit"]{
 		width: 45%;
 		float: right;
@@ -48,16 +71,79 @@ input:focus{
 .btn-cancel{
 	width: 45%;
 	float: left;
-	margin-top: -9px;
 	font-size: 1.6rem;
 	color: #333;
+	height: 54px;
+	margin-top: 12px;
   background-color: #fff;
-  border: 1px solid #ddd;
-	box-shadow: 2px 4px 5px rgba(0,0,0,.1);
+	box-shadow: 2px 4px 5px rgba(0,0,0,.4);
 	border-radius: 5px;
 }
 #edit-user-form .btn-cancel{
 	margin-top: -1px;
+}
+
+/* REGISTER PAGE */
+/* social login*/
+#form-register{
+	height: 50%;
+	min-height: 220px;
+}
+.social-buttons{
+	background: rgba(255,255,255,.3);
+	height: 50%;
+	padding: 1em 0;
+	.divider{
+		position: relative;
+		hr{
+			display: inline-block;
+	    border: 0;
+	    height:1px;
+	    background: radial-gradient(darken($basecolor, 20%) 20%, transparent 75%);
+			width: 25%;
+			margin: 7px 0;	
+		}
+		span{
+			color: darken($basecolor, 20%);
+			display: inline-block;
+			font-weight: bold;
+			width: 50%;
+			text-align: center;
+			vertical-align: 2px;
+		}
+	}
+	button{
+		background: rgba(255,255,255,.9);
+		border-radius: 5px;
+		border: 1px solid rgba(0,0,0,.6);
+		box-shadow: 3px 4px 5px rgba(0,0,0,.6);
+		display: block;
+		margin: 3vh 10%;
+		outline: none;
+		padding: .8em;
+		position: relative;
+		width: 80%;
+		span.name{
+			vertical-align: middle;
+			font-size: 1.4em;
+			margin-left: 1.5em;
+		}
+		span.fa{
+			position: absolute;
+			font-size: 2.5em;
+			left: 1em;
+			top: 10%;
+		}
+	}
+	.fa-facebook-square{
+		color: #3b5998;
+	}
+	.fa-twitter-square{
+		color: #00aced;
+	}
+	.fa-google-plus-square{
+		color: #dd4b39;
+	}
 }
 
 .social-login {

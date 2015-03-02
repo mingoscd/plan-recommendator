@@ -1,28 +1,46 @@
-<article id="form-register">
-	<%= form_for @user, url: register_path do |f| %>
-	  <div class="register-input">
-	    <%= f.email_field :email, placeholder: "Email" %>
-	  </div>
-	  <div class="register-input">
-	    <%= f.password_field :password, placeholder: "Password" %>
-	  </div>
-	  <div class="register-input">
-	    <%= f.password_field :password_confirmation, placeholder: "Repeat password" %>
-	  </div>
-	  	<%= f.submit 'Register', class: "btn" %>
-	<% end %>	
-</article>
-  <% if @user.errors.any? %>
-  	<div class="alert alert--error alert-register-error">
-  		<ul>
-				<% @user.errors.full_messages.each do |error_msg| %>
-					<li><%= error_msg %></li>
-				<% end %>
-			</ul>
-  	</div>
-  <% end %>
-<article class="social-register">
-	<button id="google-register">Register with google</button>
-	<button id="facebook-register">Register with facebook</button>
-	<button id="twitter-register">Register with twitter</button>
-</article>
+<section class="welcome-page">
+
+	<article id="form-register">
+		<%= form_for @user, url: register_path do |f| %>
+		  <div class="register-input">
+		    <%= f.email_field :email, placeholder: "Email" %>
+		  </div>
+		  <div class="register-input">
+		    <%= f.password_field :password, placeholder: "Password" %>
+		  </div>
+		  <div class="register-input">
+		    <%= f.password_field :password_confirmation, placeholder: "Repeat password" %>
+		  </div>
+		  	<%= f.submit 'Register', class: "btn" %>
+		<% end %>	
+	</article>
+
+	  <% if @user.errors.any? %>
+	  	<div class="alert alert--error alert-register-error">
+	  		<ul>
+					<% @user.errors.full_messages.each do |error_msg| %>
+						<li><%= error_msg %></li>
+					<% end %>
+				</ul>
+	  	</div>
+	  <% end %>
+
+	<article class="social-buttons">
+		<div class="divider">
+			<hr><span>or Join us using</span><hr>		
+		</div>
+		<button id="google-register">
+			<span class="fa fa-google-plus-square"></span>
+			<span class="name">Google</span>
+		</button>
+		<button id="facebook-register">
+			<span class="fa fa-facebook-square"></span>
+			<span class="name">Facebook</span>
+		</button>
+		<button id="twitter-register">
+			<span class="fa fa-twitter-square"></span>
+			<span class="name">Twitter</span>
+		</button>
+	</article>
+		
+</section>

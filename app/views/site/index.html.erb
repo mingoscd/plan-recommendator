@@ -1,10 +1,12 @@
-<article class="welcome-page">
-	<h1>Welcome!</h1>
-	<%= link_to('Sign up', register_path, class: "btn") %>
-	<span class="help-inline">or</span>
-	<button class="btn toggleLogin">Log in</button>	
+<section class="welcome-page">
 
-	<section id="login-register" class="js-fadeInRight">
+	<section class="intro">
+		<h1 class="app-name">APP NAME</h1>
+		<%= link_to('Sign up', register_path, class: "btn") %>
+		<%= link_to('Sign in',nil, class: "btn toggleLogin") %>		
+	</section>
+
+	<section id="login-form" class="js-fadeInRight">
 		<article>
 			<%= form_tag(controller: 'devise/sessions', action: 'create') do %>
 			  <div class="register-input">
@@ -13,14 +15,30 @@
 			  <div class="register-input">
 			    <%= password_field_tag :password, nil, placeholder: "Password", name: "user[password]" %>
 			  </div>
-			  <%= submit_tag 'Login', class: "btn toggleLogin" %>
+				<button class="btn btn-cancel toggleLogin">Cancel</button>
+			  <%= submit_tag 'Login', class: "btn" %>
 			<% end %>			
-			<button class="btn btn-cancel toggleLogin">Cancel</button>
-		</article>
-		<article class="social-login">
-			<button id="google-register">Google</button>
-			<button id="facebook-register">Facebook</button>
-			<button id="twitter-register">Twitter</button>
 		</article>
 	</section>
-</article>
+
+	<section id="login-form-social" class="social-login js-fadeInRight">
+		<article class="social-buttons">
+			<div class="divider">
+				<hr><span>or Join us using</span><hr>		
+			</div>
+			<button id="google-register">
+				<span class="fa fa-google-plus-square"></span>
+				<span class="name">Google</span>
+			</button>
+			<button id="facebook-register">
+				<span class="fa fa-facebook-square"></span>
+				<span class="name">Facebook</span>
+			</button>
+			<button id="twitter-register">
+				<span class="fa fa-twitter-square"></span>
+				<span class="name">Twitter</span>
+			</button>
+		</article>	
+	</section>
+
+</section>
