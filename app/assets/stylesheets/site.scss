@@ -1,15 +1,26 @@
 //only the suggests#index has this background
 .suggest-index-bg{
-	background-image: url('/images/background.jpg');
+	background-image: url('/images/welcome.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat; 
+	h2{
+		margin: .5em;
+		text-align: center;
+	}
+	input[type="submit"]{
+		padding: .7em;
+		width: 60%;
+		margin: .5em 20%;
+		font-weight: bold;
+		border-radius: 5px;
+		box-shadow: 2px 3px 4px rgba(0,0,0,.3);
+	}
 }	
 body{
 	position: absolute;
 	overflow-x: hidden;
 	background: #EBEEF7;
-
 }
 .main-content{
 	margin-top: $navbar-height;

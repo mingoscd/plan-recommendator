@@ -48,3 +48,67 @@ ul li .filter-elements{
 .gmnoprint, .gm-style-cc{
 	display: none;
 }
+
+
+/* PLACES LIST */
+.places-content{
+	padding-top: 1em;
+}
+.places-list{
+	padding: .5em 1.5em 0;
+}
+
+$place-preview-height: 70px;
+.place-preview{
+	box-sizing: content-box;
+	height: $place-preview-height;
+	position: relative;
+	border: 1px solid $lightgrey;
+	margin: .5em 0;
+	padding-right: 1em;
+	background: white;
+	box-shadow: 2px 3px 4px rgba(0,0,90,0.2);
+	* {
+		position: absolute;
+	}
+	a{
+		width: 100%;
+		height: $place-preview-height;
+	}
+	img{
+		height: $place-preview-height;
+		width: $place-preview-height;
+		display: inline-block;
+		border-right: 1px solid $lightgrey;
+		box-shadow: 1px 0 2px rgba(0,0,90,0.1);
+	}
+	h2{
+		font-size: 1.1em;
+		color: $darkgrey;
+		top: 5px;
+		left: $place-preview-height + 10px;
+		text-align: left;
+	}
+}
+
+//place details
+.name-details, .price-details, .distance-details{
+	text-align: center;
+	position: absolute;
+	z-index: 3;
+	background: rgba(255,255,255,.4);
+	width: 100%;
+	strong{
+		font-size: 1.2em;
+	}
+}
+.price-details{
+	width: 50%;
+	top: 28px;
+	left: 0;
+}
+.distance-details{
+	width: 50%;
+	top: 28px;
+	left: 50%;
+}

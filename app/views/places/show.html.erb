@@ -1,22 +1,67 @@
-
-<%= @place.name %>, <%= @place.city %>
+<h2 class="name-details"><%= @place.name %></h2>
+<div class="price-details">Price: <strong><%= @place.price %> <%= @place.currency.pluralize %></strong></div>
+<div class="distance-details"></div>
 <div class="wiki-content"></div>
+<div id="map"></div>
+
+
 <script>
-	var lang = window.navigator.language;
-	var place = "<%= @place.name %>".replace(/ /g, "_");
-	var url = "http://"+ lang +".wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page="+ place +"&callback=?"
-	$.ajax({
-        type: "GET",
-        url: url,
-        contentType: "application/json; charset=utf-8",
-        async: false,
-        dataType: "json",
-        success: function (data, textStatus, jqXHR) {
-          var link = data.parse.text["*"].split('href="')[1].split('&amp')[0];
-          $(".wiki-content").html('Info: <a href="http://'+lang+'.wikipedia.org'+link+'" target="_blank">Wikipedia link</a>');
-        },
-        error: function (errorMessage) {
-        	alert('Server Error');
-        }
+  $(document).ready(function(){
+    var map;
+    var place = {
+      name: "<%= @place.name %>", 
+      type_of_site: "<%= @place.type_of_site %>", 
+      address: "<%= @place.address %>", 
+      lat: <%= @place.lat %>, 
+      lon: <%= @place.lon %>, 
+      price: <%= @place.price %>, 
+      currency: "<%= @place.currency %>"
+    };
+    navigator.geolocation.getCurrentPosition(function(e){ 
+      var coords = e.coords;
+      getPlaceMap(coords, place);
     });
+  });
+
+  function getPlaceMap(coords,place){
+    var lon = coords.longitude;
+    var lat = coords.latitude;
+
+    //map styles
+    var element = '#map';
+    var hei = window.innerHeight - 48;
+    var wid = window.innerWidth;
+    $(element).css('width', wid+'px').css('height', hei+'px');
+    map = new GMaps({el: '#map', lat: lat, lng: lon, zoom: 14, width: wid, height: hei });
+
+    //user marker
+    var user_icon = "<%= current_user.marker %>" ? "<%= current_user.marker %>":"smile";
+    var icon = new google.maps.MarkerImage("/mapicons/" + user_icon + ".png", null, null, null, new google.maps.Size(40,40));
+    var animation = google.maps.Animation.BOUNCE;
+    map.addMarker({ lat: lat, lng: lon, title: 'YOU', icon: icon, size: 2, animation: animation });
+
+    //place marker
+    icon = "http://www.physicianoneurgentcare.com/_global/img/template/map-marker.png";
+    var price = place.price > 0 ? place.price+" "+place.currency+"s" : "FREE";
+    var markerStyle = { lat: place.lat, lng: place.lon, icon: icon, infoWindow: { content: '<h3>'+place.name+'</h3><p>'+place.address+'</p><span>'+price+'</span>'}
+      };
+      map.addMarker(markerStyle);
+      
+      //routes
+      map.getRoutes({
+        origin: [lat,lon],
+        destination: [place.lat, place.lon],
+        callback: function (e) {
+          var dist = e[0].legs[0].distance.text;
+          $(".distance-details").html('Distance: <strong>'+dist+ '</strong>');
+        }
+      });
+      map.drawRoute({
+        origin: [lat,lon],
+        destination: [place.lat, place.lon],
+        strokeColor: '#131540',
+        strokeOpacity: 0.5,
+        strokeWeight: 5
+      });
+  }
 </script>

@@ -4,7 +4,7 @@
 		<%= form_tag({controller: "places", action: "search"}, method: "get", class: "form-inline") do %>
 			<div class="type-input-control">
 				<%= label_tag( :place_type_of_site, 'Type of place: ') %>
-				<%= select("place", "type_of_site", Category.all.collect {|p| p.name }, {include_blank: 'None'} ) %>
+				<%= select("place", "type_of_site", Category.all.collect {|p| p.name }, {include_blank: 'All'} ) %>
 			</div>
 			<div class="city-input-control">
 				<%= label_tag( :place_city, 'City: ') %>
@@ -15,18 +15,40 @@
 	<article id="search-results">
 		<ul class="places-list">
 			<% @places.each do |place| %>
-				<a href="<%= place_path(place) %>">
-					<li class="place-preview">
+				<li class="place-preview" data-type="<%= place.type_of_site %>">
+					<a href="<%= place_path(place) %>">
 						<img src="<%= place.photo %>" alt="">
 						<h2><%= place.name %></h2>
-					</li>
-				</a>
+					</a>
+				</li>
 			<% end %>
 		</ul>
 	</article>
 </div>
 
 <script>
+
+	responsiveBody();
+
+	//select filter
+	$("#place_type_of_site").change(function(){
+		var type = $(this).val();
+		if(type != ""){
+			$.each( $(".place-preview"), function(){ 
+				$(this).data('type') == type ? $(this).show() : $(this).hide();
+			});
+		}else{
+			$.each( $(".place-preview"), function(){ 
+				$(this).show();
+			});
+		}
+		$("body").css('height', ($(".main-content").height()+72)+'px' );
+		$("body").css('min-height', '100vh');
+	});
+
 	//when adding elements to dom, the body must be resized: main-content + nav + 24 (ul-padding-bottom)
-	$("body").css('height', ($(".main-content").height()+72)+'px' );
+	function responsiveBody(){
+		$("body").css('height', ($(".main-content").height()+72)+'px' );
+		$("body").css('min-height', '100vh');
+	}
 </script>

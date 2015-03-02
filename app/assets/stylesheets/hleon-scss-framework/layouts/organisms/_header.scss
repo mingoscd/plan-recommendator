@@ -38,10 +38,11 @@ $navbar-height: 3em;
   &:focus {
     background-color: $bclighter;
   }
-  & form {
+  form {
   	margin-bottom: 0;
-  	& input{
-	  	border: 0;		
+  	input{
+	  	border: 0;	
+  		margin-bottom: 0;
   	}
   }
 }

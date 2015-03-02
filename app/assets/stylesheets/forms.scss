@@ -158,6 +158,9 @@ input:focus{
 /* PLACES FORM- filter forms */
 #search-form{
 	padding: 0 5vw;
+	form{
+		margin-bottom: 0;
+	}
 }
 .city-input-control, .type-input-control{
 	width: 45%;
@@ -175,41 +178,6 @@ input:focus{
 }
 .type-input-control{
 	float: right;
-}
-
-/* PLACES LIST */
-.places-content{
-	padding-top: 1em;
-}
-.places-list{
-	padding: 0 1.5em;
-}
-
-.place-preview{
-	box-sizing: content-box;
-	height: 70px;
-	position: relative;
-	border: 1px solid $lightgrey;
-	margin: .5em 0;
-	padding-right: 1em;
-	background: white;
-	box-shadow: 2px 3px 4px rgba(0,0,90,0.2);
-	* {
-		position: absolute;
-	}
-	img{
-		height: 70px;
-		width: 70px;
-		display: inline-block;
-		border-right: 1px solid $lightgrey;
-		box-shadow: 1px 0 2px rgba(0,0,90,0.1);
-	}
-	h2{
-		font-size: 1.1em;
-		color: $darkgrey;
-		top: 5px;
-		left: 80px;
-	}
 }
 
 /* PLACES form new */

@@ -15,6 +15,7 @@ module Api
 
 		    result = places.map do |place|
 		      {}.tap do |place_hash|
+		        place_hash[:id] = place.id
 		        place_hash[:name] = place.name
 		        place_hash[:photo] = place.photo
 		        place_hash[:address] = place.address
