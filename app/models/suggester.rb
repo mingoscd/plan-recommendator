@@ -65,12 +65,12 @@ class Suggester
 
 	def generate_begin_point range_lat, range_lon
 		type = get_type_begining
-		Place.where(city: @city).where(type_of_site: type).where(lat: range_lat).where(lon: range_lon)
+		Place.where(city: @city, type_of_site: type, lat: range_lat, lon: range_lon)
 	end
 
 	def generate_random_point range_lat, range_lon
 		type = get_type_random
-		Place.where(city: @city).where(type_of_site: type).where(lat: range_lat).where(lon: range_lon)
+		Place.where(city: @city, type_of_site: type, lat: range_lat, lon: range_lon)
 	end
 
 	def get_type_begining
@@ -112,8 +112,7 @@ class Suggester
 		step = 0.02
 		range_lat = (point_lat - step) .. (point_lat + step)
 		range_lon = (point_lon - step) .. (point_lon + step)
-		places = Place.where(city: @city).where(type_of_site: "Bar")
-									.where(lat: range_lat).where(lon: range_lon)
+		places = Place.where(city: @city, type_of_site: "Bar", lat: range_lat, lon: range_lon)
 									.order("price ASC").limit(10)
 		places.each do |place|
 			@plan << place
