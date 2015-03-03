@@ -85,6 +85,18 @@ input:focus{
 	box-shadow: 2px 4px 5px rgba(0,0,0,.4);
 	border-radius: 5px;
 }
+.actions a{
+	width: 60%;
+	display: block;
+	font-weight: bold;
+	text-align: center;
+	font-size: 1em;
+	color: #2196f3;
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 5px;
+	padding: .4em;
+	margin: .3em 20%;
+}
 
 /* REGISTER PAGE */
 /* social login*/

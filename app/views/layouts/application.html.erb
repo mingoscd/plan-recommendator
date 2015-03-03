@@ -9,42 +9,44 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<nav class="nav--top js-over-lightbox">
-		<div id="js-btn--burguer" class="btn--burguer">
-			<div>
-			    <span class="the-burguer"></span>
-			    <span class="the-burguer"></span>
-			    <span class="the-burguer"></span>
+	<% unless current_user.nil? %>
+		<nav class="nav--top js-over-lightbox">
+			<div id="js-btn--burguer" class="btn--burguer">
+				<div>
+				    <span class="the-burguer"></span>
+				    <span class="the-burguer"></span>
+				    <span class="the-burguer"></span>
+				</div>
 			</div>
-		</div>
-		<ul id="js-toggle-menu" class="nav--top_list navbar-list">
-			<li>
-				<%= link_to('Home page', home_path, class: 'link--top') %>
-			</li>
-			<li>
-				<%= link_to('List of places', places_path, class: 'link--top') %>
-			</li>
-			<li>
-				<%= link_to('Nearby places', nearby_places_path, class: 'link--top' ) %>
-			</li>
-			<li>
-				<%= link_to('Add place to web', new_place_path, class: 'link--top') %>
-			</li>
-			<li>
-				<%= form_tag destroy_user_session_path, method: :delete do %>
-				  <%= submit_tag "Logout", class: "link--top" %>
-				<% end %>
-			</li>
-		</ul>
-		<figure class="user-avatar">
-			<!-- <img src="/mapicons/pokeball.png" alt=""> -->
-			 <%= link_to image_tag(current_user.avatar), edit_user_path(current_user) %>
+			<ul id="js-toggle-menu" class="nav--top_list navbar-list">
+				<li>
+					<%= link_to('Home page', home_path, class: 'link--top') %>
+				</li>
+				<li>
+					<%= link_to('List of places', places_path, class: 'link--top') %>
+				</li>
+				<li>
+					<%= link_to('Nearby places', nearby_places_path, class: 'link--top' ) %>
+				</li>
+				<li>
+					<%= link_to('Add place to web', new_place_path, class: 'link--top') %>
+				</li>
+				<li>
+					<%= form_tag destroy_user_session_path, method: :delete do %>
+					  <%= submit_tag "Logout", class: "link--top" %>
+					<% end %>
+				</li>
+			</ul>
+			<figure class="user-avatar">
+				<!-- <img src="/mapicons/pokeball.png" alt=""> -->
+				 <%= link_to image_tag(current_user.avatar), edit_user_path(current_user) %>
 
-			<a href="" class="badge">
-				<span>2</span>
-			</a>
-		</figure>
-	</nav>
+				<!-- <a href="" class="badge">
+					<span>2</span>
+				</a> -->
+			</figure>
+		</nav>
+	<% end %>
 		
 	<section class="main-content">
 
