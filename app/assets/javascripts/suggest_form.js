@@ -4,7 +4,7 @@ $(document).ready(function(){
 	$(window).resize(function(){ resizeBg(); });
 
 	//gradient in input range
-	$('input[type="range"]').change(function(){
+	$(document).on('change','input[type="range"]',function(){
 		var value = $(this).val();
 		$(this).css('background-image','-webkit-linear-gradient(left, #15639F 0%, rgba(33, 150, 243, .6)'+value*20+'%, rgba(255,255,255,.5) '+value*20+'%)');
 	});

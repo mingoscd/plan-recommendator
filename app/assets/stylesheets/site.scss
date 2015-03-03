@@ -11,7 +11,7 @@
 	input[type="submit"]{
 		padding: .7em;
 		width: 60%;
-		margin: .5em 20%;
+		margin: 2em 20% 0;
 		font-weight: bold;
 		border-radius: 5px;
 		box-shadow: 2px 3px 4px rgba(0,0,0,.3);
@@ -77,15 +77,15 @@ body{
 		left: 50px;
 		right: 50px;
 		top: 10%;
-		font-size: 6em;
+		font-size: 3em;
 	}
 	a.btn {
 		position: absolute;
 		bottom: 30px;
 		width: 44%;
-		padding: .7em;
+		padding: .3em;
 		border-radius: 12px;
-		font-size: 3em;
+		font-size: 1.5em;
 		&:nth-of-type(1){
 			left: 4%;
 			background: $basecolor;

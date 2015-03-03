@@ -26,7 +26,7 @@ input:focus{
 	padding: 3vh 5vw 3vh;
 	background: rgba(255,255,255,.3);
 	& .register-input{
-		margin-bottom: 2vh;
+		margin-bottom: 3vh;
 		& input[type="email"], input[type="password"]{
 			color: $basecolor;
 			text-align: center;
@@ -71,6 +71,59 @@ input:focus{
 		float: right;
 		background: $basecolor;
 		color: white;
+	}
+}
+#edit-user-form{
+	h2{
+		text-align: center;
+	}
+	input{
+		margin: 0.5em;
+	}
+	span{
+		font-size: 1em;
+		font-weight: bold;
+		vertical-align: -webkit-baseline-middle;
+		display: inline-block;
+		margin-right: .5em;
+	}
+	input[type="date"]{
+		display: inline-block;
+		float: right;
+		text-align: right;
+		width: 45%;
+		border: 1px solid #bfbfbf;
+		margin: 0;
+	}
+	select{
+		display: inline-block;
+		width: 45%;
+		float: right;
+		vertical-align: -6px;
+		border: 1px solid #BFBFBF;
+	}
+	.place-input{
+		margin-bottom: 2em;
+		span{
+			vertical-align: -22px;
+		}
+		label{
+			background: none;
+			border-radius: 5px;
+			border: 1px solid #bfbfbf;
+			color: black;
+			display: inline-block;
+			float: right;
+			margin: 1em 0 0 1em;
+			width: 45%;
+			&.success-upload{
+				background: rgb(70, 194, 70);
+				color: white;
+			}
+		}
+		input[type="file"]{
+			display:none;
+		}		
 	}
 }
 
@@ -164,7 +217,7 @@ input:focus{
 .social-login {
 	& #google-register, #facebook-register, #twitter-register{
 		width: 100%;
-		margin: 1.5em 0 0;
+		margin: 1.7em 10%;
 		padding: 1em;
 	}	
 }

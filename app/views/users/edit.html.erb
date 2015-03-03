@@ -1,4 +1,5 @@
 <article id="edit-user-form">
+	<h2>User Profile</h2>
 	<%= form_for @user do |f| %>
 		 <div class="register-input">
 	    <%= f.text_field :name, placeholder: "Name" %>
@@ -7,15 +8,20 @@
 	    <%= f.text_field :surname, placeholder: "Surname" %>
 	  </div>
 		 <div class="register-input">
+		 	<span>Select your birthday: </span>
 	    <%= f.date_field :birthday %>
 	  </div>
 		 <div class="register-input">
+		 	<span>Select your genre:</span>
 	    <%= f.select :genre, %w[Male Female]  %>
 	  </div>
 		<div class="place-input">
+			<span>Select your avatar:</span>
+			<%= f.label :avatar, "Choose your file", class: "btn" %>
 	    <%= f.file_field :avatar%>
 	  </div>
 	  <div class="register-input">
+	  	<span>Choose your map icon:</span>
 	    <%= f.select :marker, %w[smile apple heart mario octocat pokeball] %>
 	  </div>
 	  <%= link_to('Cancel', home_path , class: "btn btn-cancel") %>

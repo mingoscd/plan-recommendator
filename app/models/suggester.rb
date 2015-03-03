@@ -25,7 +25,7 @@ class Suggester
 			#init parameters
 			i , step = 0 , 0
 			while i == 0  do
-	   		step += 0.008
+	   		step += 0.01
 	   		range_lat = (point_lat - step) .. (point_lat + step)
 	   		range_lon = (point_lon - step) .. (point_lon + step)
 	   		point = generate_begin_point(range_lat,range_lon)
@@ -38,7 +38,7 @@ class Suggester
 				point_lon = @plan.last.lon.to_f
 				step , i = 0 , 0
 				while i == 0  do
-		   		step += 0.004
+		   		step += 0.008
 		   		range_lat = (point_lat - step) .. (point_lat + step)
 		   		range_lon = (point_lon - step) .. (point_lon + step)
 		   		point = generate_random_point(range_lat,range_lon)
