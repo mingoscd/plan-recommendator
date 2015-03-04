@@ -6,6 +6,7 @@
 					<a href="<%= place_path(place) %>">
 						<img src="<%= place.photo %>" alt="">
 						<h2><%= place.name %></h2>
+						<img class="type" src="/mapicons/<%= place.type_of_site.downcase %>.png" alt="type">
 					</a>
 				</li>
 			<% end %>

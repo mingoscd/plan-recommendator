@@ -5,7 +5,11 @@ class SuggestsController < ApplicationController
 	def search
 		suggest = Suggester.new(params)
 		@plan = suggest.result
-		render 'search'
+		if @plan.empty?
+			render 'no_place'
+		else
+			render 'search'
+		end
 	end
 
 end

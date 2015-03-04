@@ -27,6 +27,7 @@ input:focus{
 	background: rgba(255,255,255,.3);
 	& .register-input{
 		margin-bottom: 3vh;
+		margin-right: 1.5em;
 		& input[type="email"], input[type="password"]{
 			color: $basecolor;
 			text-align: center;
@@ -114,8 +115,7 @@ input:focus{
 			color: black;
 			display: inline-block;
 			float: right;
-			margin: 1em 0 0 1em;
-			width: 45%;
+			margin: 1em 1.5em 0 1em;
 			&.success-upload{
 				background: rgb(70, 194, 70);
 				color: white;

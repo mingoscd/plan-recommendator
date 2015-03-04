@@ -28,18 +28,13 @@ class Suggester
 			relax = get_type @relax_types, @preferences[:money], point_lat, point_lon	
 			drink = get_type @drink_types, @preferences[:money], point_lat, point_lon
 			@plan = [];
-			4.times do
-				p "="*50
-				t = tourist.shuffle.pop
-				@plan << t 
-				p t.name, @plan.last.name 
-				
+			4.times do			
 				@plan << tourist.shuffle!.pop
 				@plan << relax.shuffle!.pop
 				@plan << drink.shuffle!.pop
 			end	
 		end
-		@plan = @plan.uniq.take(10)
+		@plan = @plan.compact.uniq.take(10)
 	end
 
 	def get_preferences params
