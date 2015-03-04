@@ -7,6 +7,11 @@
 		 <div class="register-input">
 	    <%= f.text_field :surname, placeholder: "Surname" %>
 	  </div>
+		<div class="place-input">
+			<span>Avatar:</span>
+			<%= f.label :avatar, "Choose your file", class: "btn" %>
+	    <%= f.file_field :avatar%>
+	  </div>
 		 <div class="register-input">
 		 	<span>Birthday: </span>
 	    <%= f.date_field :birthday %>
@@ -14,11 +19,6 @@
 		 <div class="register-input">
 		 	<span>Genre:</span>
 	    <%= f.select :genre, %w[Male Female]  %>
-	  </div>
-		<div class="place-input">
-			<span>Avatar:</span>
-			<%= f.label :avatar, "Choose your file", class: "btn" %>
-	    <%= f.file_field :avatar%>
 	  </div>
 	  <div class="register-input">
 	  	<span>Map icon:</span>
@@ -37,3 +37,12 @@
 			</ul>
   	</div>
   <% end %>
+
+<script>
+	$(document).ready(function(){
+		//edit user form
+		$('input[type="file"]').change(function(){
+			$(this).siblings("label").addClass("success-upload");
+		})
+	});
+</script>

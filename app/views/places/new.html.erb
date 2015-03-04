@@ -49,8 +49,15 @@
 	</div>
 <% end %>
 
-<!-- To add coords when the address is fill -->
 <script>
+$(".js-geolocateme").on("click",function(e){
+	e.preventDefault();
+	navigator.geolocation.getCurrentPosition(function(e){
+		var query = e.coords.latitude+","+e.coords.longitude;
+		getAddressByLatLon(query);
+		console.log($('input[name="place[lat]"]').val(), $('input[name="place[address]"]').val());
+	});
+});
 $("#place_address").on('change', function(e){
 	var city = $('input[name="place[city]"]').val();
 	var address = $('input[name="place[address]"]').val();
@@ -72,7 +79,7 @@ function getLatLonByAddress(query){
 	$.ajax({ dataType: "json", url: url+query, data: data, success: function(data){
 			var lat = data.results[0].geometry.location.lat;
 			var lon = data.results[0].geometry.location.lng;
-			$('input[name="place[lat]"]').val(lat);
+			$('input#place_lat').value = lat;
 			$('input[name="place[lon]"]').val(lon);
 		} 
 	});

@@ -55,7 +55,9 @@ ul li .filter-elements{
 	padding-top: 1em;
 }
 .places-list{
-	padding: .5em 1.5em 0;
+	padding: .5em 1.5em 1em;
+	margin-bottom: 0;
+	background: rgb(235, 238, 247);
 }
 
 $place-preview-height: 70px;

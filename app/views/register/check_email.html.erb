@@ -1,7 +1,10 @@
-<% if flash[:notice] %>
-	<div class="alert alert--success">
-		<p><%= flash[:notice] %></p>
-	</div>
-<% end %>
-
-<h1>Check your email</h1>
+<section class="welcome-page">
+	<% if flash[:notice] %>
+		<div class="alert alert--success">
+			<p><%= flash[:notice] %></p>
+		</div>
+	<% end %>
+	<h1>Planify trusts you. You don't need email verification</h1>
+	<%= link_to('Log in', new_user_session_path, class: "btn") %>
+	<!-- <h1>Check your email</h1> -->	
+</section>
