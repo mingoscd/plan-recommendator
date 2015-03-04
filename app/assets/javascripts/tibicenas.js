@@ -1,11 +1,10 @@
 //Jquery
 $(document).ready(function(){
-
 	$(document).on('click', '#js-btn--burguer', function() {
 	  $(this).toggleClass("js-active");
 	  var transitionTime = 700;
-		toggleMenu(transitionTime);
 		toggleShadow(transitionTime);
+		toggleMenu(transitionTime);
 		toggleBlockScroll();
 	});
 
@@ -39,18 +38,17 @@ $(document).ready(function(){
 	}
 
 	function createLightbox(transitionTime){
-		$(".js-over-lightbox").addClass("js-over-lightbox--active");
+		$(".js-over-lightbox").toggleClass("js-over-lightbox--active");
 		$("body").append('<div id="js-lightbox" class="lightbox"></div>');
-		$("#js-lightbox").fadeTo(transitionTime, .4).addClass("js-lightbox--active");
+		$("#js-lightbox").fadeTo(transitionTime, .4).toggleClass("js-lightbox--active");
 	}
 	function removeLightbox(transitionTime){
-		$("#js-lightbox").fadeTo(transitionTime,0);
 		setTimeout(function(){ 
-			$(".js-over-lightbox").removeClass("js-over-lightbox--active")
-			$("#js-lightbox").remove()
+			$(".js-over-lightbox").removeClass("js-over-lightbox--active");
+			$("#js-lightbox").remove();
 		}, transitionTime);
+		$("#js-lightbox").fadeTo(transitionTime,0);
 	}
-
 
 
 
