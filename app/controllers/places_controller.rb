@@ -2,7 +2,7 @@ class PlacesController < ApplicationController
 	#CRUD methods
 
 	def index
-		@places = Place.all
+		@places = Place.all.order(updated_at: "DESC")
 	end
 
 	def show

@@ -72,3 +72,6 @@ Place.create(city: "Barcelona", name: "MOB", type_of_site: "Cafe" , address: "Ca
 Place.create(city: "Barcelona", name: "La Taberna de l'Eixample", type_of_site: "Bar" , address: "Gran Via de les Corts Catalanes, 688" , lat: 41.393122, lon: 2.173748, price: 3, currency: "euro")
 Place.create(city: "Barcelona", name: "Snooker", type_of_site: "Bar" , address: "Carrer de Roger de Llúria, 57", lat: 41.393700, lon: 2.167985, price: 5, currency: "euro")
 Place.create(city: "Barcelona", name: "Santa Piadina", type_of_site: "Food_Restaurant" , address: "" , lat: 41.389278, lon: 2.179033, price: 5, currency: "euro")
+
+User.create(email: "dcividanes91@gmail.com", password: "12345678", password_confirmation: "12345678")
+User.create(email: "demo@planify.com", password: "hackshow", password_confirmation: "hackshow")
