@@ -16,8 +16,7 @@ class PlacesController < ApplicationController
 	def create
 		@place = Place.new place_params
 		if @place.save
-			flash[:notice] = "Place created correctly"
-			redirect_to home_path
+			redirect_to place_path(@place.id)
 		else
 			render 'new'
 		end

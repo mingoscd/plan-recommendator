@@ -4,8 +4,13 @@ class SuggestsController < ApplicationController
 
 	def search
 		suggest = Suggester.new(params)
-		@plan = suggest.result
-		@plan = suggest.result if @plan.empty? #reduce the probabilities to have empty page
+		@plan, i = [], 0
+		while @plan.count == 0
+			@plan = suggest.result
+			i += 1
+			break if i == 10
+		end
+
 		if @plan.empty?
 			render 'no_place'
 		else

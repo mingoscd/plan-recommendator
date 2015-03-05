@@ -5,3 +5,6 @@ $(document).on('click','.toggleLogin',function(){
 	$(".intro").toggle();
 	return false;
 });
+$(document).on('click','#twitter-register, #facebook-register,#google-register', function(){
+	alert('Not implemented yet, sorry :(');
+});
