@@ -55,7 +55,6 @@ $(".js-geolocateme").on("click",function(e){
 	navigator.geolocation.getCurrentPosition(function(e){
 		var query = e.coords.latitude+","+e.coords.longitude;
 		getAddressByLatLon(query);
-		console.log($('input[name="place[lat]"]').val(), $('input[name="place[address]"]').val());
 	});
 });
 $("#place_address").on('change', function(e){
